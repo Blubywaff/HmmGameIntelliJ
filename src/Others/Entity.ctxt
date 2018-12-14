@@ -1,0 +1,31 @@
+#BlueJ class context
+comment0.target=Entity
+comment1.params=
+comment1.target=Entity()
+comment10.params=
+comment10.target=double\ getDirection()
+comment11.params=arrows
+comment11.target=void\ move(java.util.ArrayList)
+comment11.text=public\ void\ move(String\ arrow)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ int\ moveDirection\ \=\ direction;\r\n\ \ \ \ \ \ \ \ if(arrow\ \=\=\ "up")\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ //do\ nothing\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(arrow\ \=\=\ "right")\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ moveDirection\ +\=\ 90;//change\ direction\ to\ 90\ degrees\ relative\ to\ actual\ direction\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(arrow\ \=\=\ "down")\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ moveDirection\ +\=\ 180;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(arrow\ \=\=\ "left")\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ moveDirection\ +\=\ 270;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ if(moveDirection\ >\=\ 360)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ moveDirection\ -\=\ 360;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ if(moveDirection\ <\=\ 90)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionX\ +\=\ (moveDirection)/moveScale;\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionY\ -\=\ (90\ -\ moveDirection)/moveScale;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(moveDirection\ <\=\ 180\ &&\ moveDirection\ >\ 90)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionX\ +\=\ (180\ -\ moveDirection)/moveScale;\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionY\ +\=\ (moveDirection\ -\ 90)/moveScale;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(moveDirection\ <\=\ 270\ &&\ moveDirection\ >\ 180)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionX\ -\=\ (moveDirection\ -\ 180)/moveScale;\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionY\ +\=\ (270\ -\ moveDirection)/moveScale;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(moveDirection\ <\=\ 359\ &&\ moveDirection\ >\ 270)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionX\ -\=\ (360\ -\ moveDirection)/moveScale;\r\n\ \ \ \ \ \ \ \ \ \ \ \ positionY\ -\=\ (moveDirection\ -\ 270)/moveScale;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ //System.out.println(positionX\ +\ "\ -\ "\ +\ positionY);\r\n\ \ \ \ \ \ \ \ MainProgram.myFrame.panelRefresh();\r\n}
+comment12.params=vector\ direction
+comment12.target=void\ move(double,\ java.lang.String)
+comment13.params=arrows
+comment13.target=void\ displayMove(java.util.ArrayList)
+comment2.params=posX\ posY
+comment2.target=Entity(double,\ double)
+comment3.params=d
+comment3.target=void\ damage(double)
+comment4.params=
+comment4.target=void\ checkDead()
+comment5.params=
+comment5.target=void\ fixDisplayCoords()
+comment6.params=
+comment6.target=double\ getPosX()
+comment6.text=\r\n\ \ \ \ public\ void\ changeDirection(int\ d)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ direction\ \=\ d;\r\n\ \ \ \ \ \ \ \ if(direction\ >\=\ 360)\r\n\ \ \ \ \ \ \ \ \ \ \ \ direction\ -\=\ 360;\r\n\ \ \ \ \ \ \ \ else\ if(direction\ <\=\ 0)\r\n\ \ \ \ \ \ \ \ \ \ \ \ direction\ +\=\ 360;\r\n\ \ \ \ }\r\n
+comment7.params=
+comment7.target=double\ getPosY()
+comment8.params=
+comment8.target=int\ getDisplayX()
+comment9.params=
+comment9.target=int\ getDisplayY()
+numComments=14

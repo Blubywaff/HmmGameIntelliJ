@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Structure
+comment1.params=
+comment1.target=Structure()
+comment2.params=
+comment2.target=void\ mine()
+comment3.params=factor
+comment3.target=void\ mine(double)
+comment4.params=
+comment4.target=void\ destroy()
+numComments=5

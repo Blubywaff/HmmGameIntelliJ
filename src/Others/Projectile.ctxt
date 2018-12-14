@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Projectile
+comment1.params=
+comment1.target=Projectile()
+comment2.params=d\ r\ v
+comment2.target=Projectile(double,\ double,\ Vector)
+comment2.text=public\ Projectile(double\ d,\ double\ x,\ double\ y,\ double\ r)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ damage\ \=\ d;\r\n\ \ \ \ \ \ \ \ positionX\ \=\ x;\r\n\ \ \ \ \ \ \ \ positionY\ \=\ y;\r\n\ \ \ \ \ \ \ \ range\ \=\ r;\r\n\ \ \ \ \ \ \ \ checkEnemy();\r\n}
+comment3.params=
+comment3.target=void\ checkEnemy()
+numComments=4

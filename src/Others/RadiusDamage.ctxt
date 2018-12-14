@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=RadiusDamage
+comment1.params=d\ x\ y\ r
+comment1.target=RadiusDamage(double,\ double,\ double,\ double)
+comment2.params=
+comment2.target=void\ checkEnemy()
+numComments=3

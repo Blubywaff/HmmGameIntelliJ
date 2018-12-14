@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=ArmorTurret
+comment1.params=
+comment1.target=ArmorTurret()
+comment2.params=
+comment2.target=void\ fire()
+comment3.params=v
+comment3.target=void\ fire(Vector)
+comment4.params=
+comment4.target=Vector\ calcVector()
+numComments=5

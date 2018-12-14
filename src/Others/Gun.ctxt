@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Gun
+comment1.params=
+comment1.target=Gun()
+comment2.params=
+comment2.target=void\ endInit()
+comment3.params=
+comment3.target=void\ applyPerks()
+comment4.params=
+comment4.target=void\ fire()
+comment5.params=v
+comment5.target=void\ fire(Vector)
+comment5.text=public\ void\ fire()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ if(MainProgram.tick\ -\ tickFired\ >\=\ fireRate/MainProgram.tickSpeed)\r\n\ \ \ \ \ \ \ \ \ \ \ \ canFire\ \=\ true;\r\n\ \ \ \ \ \ \ \ if(canFire)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ Projectile\ projectile\ \=\ new\ Projectile(damage,\ MainProgram.player.positionX,\ MainProgram.player.positionY,\ range,\ new\ Vector(MainProgram.player.sDirect,\ MainProgram.player.direction));\r\n\ \ \ \ \ \ \ \ \ \ \ \ canFire\ \=\ false;\r\n\ \ \ \ \ \ \ \ \ \ \ \ tickFired\ \=\ MainProgram.tick;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ //Projectile\ projectile\ \=\ new\ Projectile(damage,\ MainProgram.player.positionX,\ MainProgram.player.positionY,\ range);\r\n}
+numComments=6

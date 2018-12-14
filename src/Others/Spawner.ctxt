@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Spawner
+comment1.params=
+comment1.target=Spawner()
+comment2.params=posX\ posY
+comment2.target=Spawner(double,\ double)
+comment3.params=
+comment3.target=void\ spawn()
+comment4.params=
+comment4.target=Enemy\ doSpawn()
+comment5.params=arrows
+comment5.target=void\ move(java.util.ArrayList)
+comment6.params=vector\ direction
+comment6.target=void\ move(double,\ java.lang.String)
+numComments=7
