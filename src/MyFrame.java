@@ -62,7 +62,7 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
     public void keyPressed(KeyEvent keyEvent) {
         if(!keysDown.contains(new Integer(keyEvent.getKeyCode())))
             keysDown.add(new Integer(keyEvent.getKeyCode()));
-        if(dMode == "singleplayer" && MainProgram.tick != tickUpdate) {
+        if(dMode == "singleplayer" /*&& MainProgram.tick != tickUpdate*/) {
             tickUpdate = MainProgram.tick;
             if(keysDown.contains(new Integer(KeyEvent.VK_UP)) || keysDown.contains(new Integer(KeyEvent.VK_RIGHT)) || keysDown.contains(new Integer(KeyEvent.VK_DOWN)) || keysDown.contains(new Integer(KeyEvent.VK_LEFT)) || keysDown.contains(new Integer(KeyEvent.VK_A)) || keysDown.contains(new Integer(KeyEvent.VK_S)) || keysDown.contains(new Integer(KeyEvent.VK_W)) || keysDown.contains(new Integer(KeyEvent.VK_D))) {
                 if(keysDown.contains(new Integer(KeyEvent.VK_UP)) || keysDown.contains(new Integer(KeyEvent.VK_W)))
@@ -160,6 +160,7 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
     public void mouseReleased(MouseEvent mouseEvent)
     {
         mouseKeysDown.remove(new Integer(mouseEvent.getButton()));
+        mouseKeysDown.clear();
     }
     
     @Override
@@ -206,7 +207,8 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
             }*/
             if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON1))) {
                 MainProgram.player.use(1, getMX(), getMY());
-            } else if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON3))) {
+            }
+            if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON3)) /*isRightClick(mouseEvent)*/) {
                 MainProgram.player.use(3, getMX(), getMY());
             }
         }

@@ -9,7 +9,7 @@ public class Enemy extends Entity
     public Enemy() {
         super();
         isRandMove = false;
-        drops = new ZombieParts(3);
+        drops = new ZombieParts((int)(Math.random()*5+3));
     }
     
     public Enemy(double posX, double posY) {
@@ -17,6 +17,10 @@ public class Enemy extends Entity
         randX = positionX + Math.random()*400-200;
         randY = positionY + Math.random()*400-200;
         isRandMove = true;
+    }
+    
+    public void enemyInit() {
+        
     }
     
     public void playerCheck()

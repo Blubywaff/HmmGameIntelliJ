@@ -9,8 +9,11 @@ public class BasicSlingshot extends Slingshots
         range = defaultRange;
         defaultFireRate = FileManager.basicSlingshot("defaultFireRate");//miliseconds delay
         fireRate = defaultFireRate;
-        family = "Primal Tech";
-        name = "Basic Slingshot";
         endInit();
+        basicSlingshotInit();
+    }
+    
+    public void basicSlingshotInit() {
+        name = "Basic Slingshot";
     }
 }

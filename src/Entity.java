@@ -18,27 +18,25 @@ public class Entity
     public int deathTick = -1;
     public double defaultHealth;
     public Inventory inventory = new Inventory();
-    public Resource drops = new NullResource();
+    public Resource drops = new ZombieParts((int)(Math.random()*5+3))/*NullResource()*/;
     
     public Entity()
     {
-        armor = 1.0;//default 1
-        shield = 0.0;
-        health = 100;
-        positionX = displayPosX = 960;
-        positionY = displayPosY = 540;
-        isDead = false;
-        spawnTick = MainProgram.tick;
+        positionX = displayPosX = /*960*/ 0;
+        positionY = displayPosY = /*540*/ 0;
+        entityInit();
     }
     
     public Entity(double posX, double posY) {
         positionX = posX;
         positionY = posY;
+        entityInit();
+    }
+    
+    public void entityInit() {
         armor = 1.0;//default 1
         shield = 0.0;
         health = 100;
-        //positionX = displayPosX = 960;
-        //positionY = displayPosY = 540;
         isDead = false;
         spawnTick = MainProgram.tick;
     }
@@ -58,6 +56,7 @@ public class Entity
             isDead  = true;
             if(deathTick == -1) {
                 deathTick = MainProgram.tick;
+                MainProgram.player.inventory.zParts.amount += drops.amount; 
             }
         } else {
             isDead = false;

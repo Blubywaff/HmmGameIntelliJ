@@ -2,12 +2,17 @@ public class AdvancedSlingshot extends Slingshots {
     public AdvancedSlingshot()
     {
         super();
-        defaultDamage = 70;
+        defaultDamage = FileManager.advancedSlingshot("defaultDamage");
         damage = defaultDamage;
-        defaultRange = 120;
+        defaultRange = FileManager.advancedSlingshot("defaultRange");
         range = defaultRange;
-        defaultFireRate = 4000;//milliseconds delay
+        defaultFireRate = FileManager.advancedSlingshot("defaultFireRate");//milliseconds delay
         fireRate = defaultFireRate;
         endInit();
+        advancedSlingshotInit();
+    }
+    
+    public void advancedSlingshotInit() {
+        name = "Advanced Slingshot";
     }
 }

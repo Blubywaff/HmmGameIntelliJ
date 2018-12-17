@@ -87,7 +87,7 @@ public class Player extends Entity
         if(mB == 1) {
             inventory.toolPrimary.use(mX, mY);
         } else if(mB == 3) {
-            inventory.toolPrimary.use(mX, mY);
+            inventory.toolSecondary.use(mX, mY);
         }
     }
     

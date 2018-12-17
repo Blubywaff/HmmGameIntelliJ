@@ -1,10 +1,14 @@
 public class Stone extends Resource {
     public Stone() {
         super();
-        name = "Stone";
+        stoneInit();
     }
     public Stone(double a) {
         super(a);
+        stoneInit();
+    }
+    
+    public void stoneInit() {
         name = "Stone";
     }
 }

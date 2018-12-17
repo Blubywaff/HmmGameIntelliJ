@@ -183,8 +183,9 @@ public class MyPanel extends JPanel //implements KeyListener
         makeText("Legs: " + MainProgram.player.inventory.armorLegs.name, 60, 175);
         makeText("Feet: " + MainProgram.player.inventory.armorFeet.name, 60, 250);
         
-        makeText("Wood: " + MainProgram.player.inventory.wood.amount, 950, 450);
-        makeText("Stone: " + MainProgram.player.inventory.stone.amount, 950, 500);
+        makeText("Wood: " + MainProgram.player.inventory.wood.amount, 950, 400);
+        makeText("Stone: " + MainProgram.player.inventory.stone.amount, 950, 450);
+        makeText("Zombie parts: " + MainProgram.player.inventory.zParts.amount, 950, 500);
     }
     
     public void drawPlayerInfo() {
@@ -195,10 +196,21 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.RED);
         int terval = (int)(MainProgram.player.defaultHealth / 100);
         filledRectangle(900,100, (int)(MainProgram.player.health / terval), 20);
-        graphic.setColor(Color.BLUE);
+        
+        graphic.setColor(Color.RED);
         graphic.setFont(new Font("WeaponInfo", 0, 15));
+        if(MainProgram.player.useMode == "Gun") {
+            graphic.setColor(Color.BLUE);
+        } else {
+            graphic.setColor(Color.RED);
+        }
         makeText("Primary Weapon: " + MainProgram.player.inventory.gunPrimary.name, 1700, 900);
         makeText("Secondary Weapon: " + MainProgram.player.inventory.gunSecondary.name, 1700, 950);
+        if(MainProgram.player.useMode == "Tool") {
+            graphic.setColor(Color.BLUE);
+        } else {
+            graphic.setColor(Color.RED);
+        }
         makeText("Primary Tool: " + MainProgram.player.inventory.toolPrimary.name, 10, 900);
         makeText("Secondary Tool: " + MainProgram.player.inventory.toolSecondary.name, 10, 950);
     }

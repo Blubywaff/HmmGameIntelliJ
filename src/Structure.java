@@ -1,5 +1,6 @@
 public class Structure extends Entity {
     public Structure() {
+        super();
     }
     
     public void mine() {

@@ -1,3 +1,3 @@
-defaultDamage - 500
+defaultDamage - 50
 defaultRange - 100
 defaultFireRate - 5000

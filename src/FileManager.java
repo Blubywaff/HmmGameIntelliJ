@@ -116,4 +116,24 @@ public class FileManager {
             return 0;
         }
     }
+    public static double advancedSlingshot(String info) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(basePath + "AdvancedSlingshot.txt"));
+            String line = "";
+            double result = 0;
+            while((line = reader.readLine()) != null) {
+                if(line.contains(info)) {
+                    result = Double.parseDouble(line.substring(info.length()+2));
+                }
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return 0;
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return 0;
+        }
+    }
 }

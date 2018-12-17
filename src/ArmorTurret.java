@@ -1,7 +1,7 @@
 public class ArmorTurret extends Gun {
     public Gun gun;
     public ArmorTurret() {
-        gun = new NullGun();
+        gun = new BasicSlingshot();
     }
     
     @Override

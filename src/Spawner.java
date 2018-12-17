@@ -4,15 +4,20 @@ public class Spawner extends Enemy{
     public int speed;//miliseconds
     public double tickSpawn = 0;
     public Spawner() {
+        super();
         positionX = positionY = 0;
-        speed = 0;
-        type = "generic";
+        spawnerInit();
     }
     
     public Spawner(double posX, double posY) {
         super(posX, posY);
+        spawnerInit();
+    }
+    
+    public void spawnerInit() {
         speed = 0;
         type = "generic";
+        health = 500;
     }
     
     public void spawn() {

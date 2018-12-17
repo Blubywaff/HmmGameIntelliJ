@@ -2,6 +2,7 @@ public class Environment extends Structure {
     public Resource resource = new NullResource();
     public double normalYeild = 0;
     public Environment() {
+        super();
     }
     
     @Override

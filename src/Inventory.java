@@ -3,6 +3,7 @@ import java.util.*;
 public class Inventory
 {
     public ArrayList<Object> items =  new ArrayList<Object>();
+    public ZombieParts zParts = new ZombieParts(0);
     public Wood wood = new Wood(0);
     public Stone stone = new Stone(0);
     public Gun gunPrimary;
@@ -26,6 +27,8 @@ public class Inventory
             wood.amount += a;
         } else if(t == "Stone") {
             stone.amount += a;
+        } else if(t == "ZombieParts") {
+            zParts.amount += a;
         }
     }
 } 
