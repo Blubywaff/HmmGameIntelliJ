@@ -1,15 +1,15 @@
-public class ArmorTurret extends Gun {
+public class ArmorTurret extends ArmorModule {
     public Gun gun;
     public ArmorTurret() {
         gun = new BasicSlingshot();
     }
     
-    @Override
+    //@Override
     public void fire() {
         fire(calcVector());
     }
     
-    @Override
+    //@Override
     public void fire(Vector v) {
         gun.fire(v);
     }
@@ -27,8 +27,7 @@ public class ArmorTurret extends Gun {
                 slope = -1*slope;
                 if(z.positionX > MainProgram.player.positionX) {
                     sDirect = "right";
-                }
-                else if(z.positionX < MainProgram.player.positionX){
+                } else if(z.positionX < MainProgram.player.positionX){
                     sDirect = "left";
                 } else if(slope == Double.NEGATIVE_INFINITY) {
                     sDirect = "up";

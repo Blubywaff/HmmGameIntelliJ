@@ -5,6 +5,8 @@ public class Projectile extends Entity
     public double range;
     public int penetration = 1;
     public Vector vector;
+    public double hitX;
+    public double hitY;
     
     public Projectile()
     {
@@ -47,6 +49,11 @@ public class Projectile extends Entity
         }
         for(double[] coord : coords) {
             for(Zombie z : MainProgram.zombies) {
+                if(numHit >= penetration) {
+                    break;
+                }
+                hitX = z.displayPosX;
+                hitY = z.displayPosY;
                 if(Math.sqrt((coord[1] - z.positionY) * (coord[1] - z.positionY) + (coord[0] - z.positionX) * (coord[0] - z.positionX)) < 5) {
                     z.damage(damage);
                     numHit++;
@@ -54,6 +61,11 @@ public class Projectile extends Entity
                 }
             }
             for(ZombieSpawner zs : MainProgram.zombieSpawners) {
+                if(numHit >= penetration) {
+                    break;
+                }
+                hitX = zs.displayPosX;
+                hitY = zs.displayPosY;
                 if(Math.sqrt((coord[1] - zs.positionY) * (coord[1] - zs.positionY) + (coord[0] - zs.positionX) * (coord[0] - zs.positionX)) < 5) {
                     zs.damage(damage);
                     numHit++;

@@ -15,6 +15,8 @@ public class Gun extends Item
     public boolean canFire = true;
     public int tickFired = -100000;
     //public String name;
+    public double hitX;
+    public double hitY;
     
     public final HeavyRocksPerk heavyRocks = new HeavyRocksPerk();
     public final ThickBandPerk thickBand = new ThickBandPerk();
@@ -67,6 +69,8 @@ public class Gun extends Item
             Projectile projectile = new Projectile(damage, range, v);
             canFire = false;
             tickFired = MainProgram.tick;
+            hitX = projectile.hitX;
+            hitY = projectile.hitY;
         }
     }
 }

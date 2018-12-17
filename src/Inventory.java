@@ -16,6 +16,8 @@ public class Inventory
     public Armor armorHands;
     public Tool toolPrimary;
     public Tool toolSecondary;
+    public int numAM = 0;
+    public ArmorModule[] ArmorModules = new ArmorModule[numAM];
     public Inventory()
     {
     }

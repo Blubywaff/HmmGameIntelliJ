@@ -6,6 +6,7 @@ public class Armor extends Item
     //public String name = "";
     public double shield = 0;
     public double armor = 0;
+    public int numAM;
     public Armor() {
         perks.add(new NullArmorPerk());
         perks.add(new NullArmorPerk());

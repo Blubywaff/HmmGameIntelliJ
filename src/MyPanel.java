@@ -9,6 +9,7 @@ public class MyPanel extends JPanel //implements KeyListener
     public static String printerSet = "";
     public static ArrayList<String[]> commands = new ArrayList<String[]>();
     public final static Color GREEN1 = new Color(0, 150, 0);
+    public final static int SHOWSHOOT = 200; //millisecond
     
     public MyPanel()
     {
@@ -323,9 +324,17 @@ public class MyPanel extends JPanel //implements KeyListener
     }
     
     public void drawShoot() {
-        if(MainProgram.player.inventory.gunBody.tickFired + (200/MainProgram.tickSpeed) >= MainProgram.tick) {
-            graphic.setColor(new Color(200, 0, 200));
+        if(MainProgram.player.inventory.gunBody.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+            graphic.setColor(new Color(250, 0, 200));
             filledEllipse(MainProgram.player.displayPosX-50, MainProgram.player.displayPosY-50, 100, 100);
+        }
+        if(MainProgram.player.inventory.gunPrimary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+            graphic.setColor(new Color(125, 50, 255));
+            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY);
+        }
+        if(MainProgram.player.inventory.gunSecondary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+            graphic.setColor(new Color(0, 50, 200));
+            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunSecondary.hitX, (int)MainProgram.player.inventory.gunSecondary.hitY);
         }
     }
     

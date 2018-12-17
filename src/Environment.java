@@ -1,13 +1,13 @@
 public class Environment extends Structure {
     public Resource resource = new NullResource();
-    public double normalYeild = 0;
+    public double normalYield = 0;
     public Environment() {
         super();
     }
     
     @Override
     public void mine(double factor) {
-        double mineAmount = normalYeild*factor;
+        double mineAmount = normalYield*factor;
         if(mineAmount <= resource.amount) {
             resource.amount -= mineAmount;
             MainProgram.player.inventory.addResource(resource.name, mineAmount);

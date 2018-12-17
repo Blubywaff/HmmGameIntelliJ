@@ -4,4 +4,9 @@ public class Multitool extends Tool {
         mineFactor = 1;
         name = "Multitool";
     }
+    public void multitoolInit() {
+        useType = "All";
+        mineFactor = 1;
+        name = "Multitool";
+    }
 }
