@@ -67,11 +67,14 @@ public class Gun extends Item
             canFire = true;
         if(canFire) {
             Projectile projectile = new Projectile(damage, range, v);
+            if(this.equals(MainProgram.player.inventory.gunPrimary)) {
+                projectile.isPrimary = true;
+            } else {
+                projectile.isPrimary = false;
+            }
+            //projectile.isPrimary = true;
             canFire = false;
             tickFired = MainProgram.tick;
-            hitX = projectile.hitX;
-            hitY = projectile.hitY;
-            System.out.println(MainProgram.tick);
         }
     }
 }

@@ -17,7 +17,7 @@ public class Inventory
     public Tool toolPrimary;
     public Tool toolSecondary;
     public int numAM = 0;
-    public ArmorModule[] ArmorModules = new ArmorModule[numAM];
+    public ArmorModule[] armorModules = new ArmorModule[numAM];
     public Inventory()
     {
     }
@@ -31,6 +31,16 @@ public class Inventory
             stone.amount += a;
         } else if(t == "ZombieParts") {
             zParts.amount += a;
+        }
+    }
+    public void fixAMs() {
+        ArmorModule[] temp = armorModules;
+        numAM = armorHands.numAM + armorHead.numAM + armorChest.numAM + armorLegs.numAM + armorFeet.numAM;
+        armorModules = new ArmorModule[numAM];
+        int nums = 0;
+        for(ArmorModule a : temp) {
+            armorModules[nums] = a;
+            nums++;
         }
     }
 } 

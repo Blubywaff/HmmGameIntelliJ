@@ -7,6 +7,7 @@ public class Projectile extends Entity
     public Vector vector;
     public double hitX;
     public double hitY;
+    public boolean isPrimary = true;
     
     public Projectile()
     {
@@ -55,7 +56,11 @@ public class Projectile extends Entity
                 if(Math.sqrt((coord[1] - z.positionY) * (coord[1] - z.positionY) + (coord[0] - z.positionX) * (coord[0] - z.positionX)) < 5) {
                     z.damage(damage);
                     numHit++;
-                    MyPanel.z = z;
+                    if(isPrimary) {
+                        MyPanel.hitsP.add(z);
+                    } else {
+                        MyPanel.hitsS.add(z);
+                    }
                     break;
                 }
             }
@@ -66,8 +71,11 @@ public class Projectile extends Entity
                 if(Math.sqrt((coord[1] - zs.positionY) * (coord[1] - zs.positionY) + (coord[0] - zs.positionX) * (coord[0] - zs.positionX)) < 5) {
                     zs.damage(damage);
                     numHit++;
-                    hitX = zs.displayPosX;
-                    hitY = zs.displayPosY;
+                    if(isPrimary) {
+                        MyPanel.hitsP.add(zs);
+                    } else {
+                        MyPanel.hitsS.add(zs);
+                    }
                     break;
                 }
             }

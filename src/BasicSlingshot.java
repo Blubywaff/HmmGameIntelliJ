@@ -3,12 +3,14 @@ public class BasicSlingshot extends Slingshots
     public BasicSlingshot()
     {
         super();
-        defaultDamage = 200;//FileManager.basicSlingshot("defaultDamage");
+        defaultDamage = FileManager.basicSlingshot("defaultDamage");
         damage = defaultDamage;
-        defaultRange = 100;//FileManager.basicSlingshot("defaultRange");
+        defaultRange = FileManager.basicSlingshot("defaultRange");
         range = defaultRange;
-        defaultFireRate = 5000;//FileManager.basicSlingshot("defaultFireRate");//miliseconds delay
+        defaultFireRate = FileManager.basicSlingshot("defaultFireRate");//miliseconds delay
         fireRate = defaultFireRate;
+        //defaultAccuracy = 1;
+        //accuracy = defaultAccuracy;
         endInit();
         basicSlingshotInit();
     }

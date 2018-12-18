@@ -10,7 +10,8 @@ public class MyPanel extends JPanel //implements KeyListener
     public static ArrayList<String[]> commands = new ArrayList<String[]>();
     public final static Color GREEN1 = new Color(0, 150, 0);
     public final static int SHOWSHOOT = 200; //millisecond
-    public static Zombie z = new Zombie();
+    public static ArrayList<Enemy> hitsP = new ArrayList<Enemy>();
+    public static ArrayList<Enemy> hitsS = new ArrayList<Enemy>();
     
     public MyPanel()
     {
@@ -329,16 +330,38 @@ public class MyPanel extends JPanel //implements KeyListener
             graphic.setColor(new Color(250, 0, 200));
             filledEllipse(MainProgram.player.displayPosX-50, MainProgram.player.displayPosY-50, 100, 100);
         }
+        /*
         if(MainProgram.player.inventory.gunPrimary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(125, 50, 255));
             //line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY);
             //filledEllipse((int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY, 50, 50);
             filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
+            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, z.displayPosX, z.displayPosY);
         }
         if(MainProgram.player.inventory.gunSecondary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(0, 50, 200));
             //line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunSecondary.hitX, (int)MainProgram.player.inventory.gunSecondary.hitY);
             filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
+        }
+        */
+        if(MainProgram.player.inventory.gunPrimary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+            graphic.setColor(new Color(125, 50, 255));
+            for(Enemy e : hitsP) {
+                filledEllipse(e.displayPosX-15, e.displayPosY-15, 30, 30);
+                line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, e.displayPosX, e.displayPosY);
+            }
+        } else {
+            hitsP.clear();
+        }
+        if(MainProgram.player.inventory.gunSecondary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+            graphic.setColor(new Color(125, 50, 255));
+            System.out.println(MainProgram.player.inventory.gunSecondary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick);
+            for(Enemy e : hitsS) {
+                filledEllipse(e.displayPosX-15, e.displayPosY-15, 30, 30);
+                line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, e.displayPosX, e.displayPosY);
+            }
+        } else {
+            hitsS.clear();
         }
     }
     

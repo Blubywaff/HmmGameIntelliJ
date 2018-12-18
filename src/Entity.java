@@ -30,6 +30,8 @@ public class Entity
     public Entity(double posX, double posY) {
         positionX = posX;
         positionY = posY;
+        displayPosX = (int)positionX;
+        displayPosY = (int)positionY;
         entityInit();
     }
     

@@ -16,7 +16,7 @@ public class Player extends Entity
         super();
         inventory.gunPrimary = new BasicSlingshot();
         inventory.gunBody = new MagnetoRepulser();
-        inventory.gunSecondary = new NullGun();
+        inventory.gunSecondary = new AdvancedSlingshot();
         inventory.armorHead = new Hat();
         inventory.armorChest = new Shirt();
         inventory.armorLegs = new Pants();

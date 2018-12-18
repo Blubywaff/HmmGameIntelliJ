@@ -87,7 +87,7 @@ public class Enemy extends Entity
                 }
             }
         }//level one ai
-        /*if(!isDead) {
+        /* else if(true) {
             
         }*///level two ai
     }
