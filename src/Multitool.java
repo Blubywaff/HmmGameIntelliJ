@@ -7,6 +7,6 @@ public class Multitool extends Tool {
     public void multitoolInit() {
         useType = "All";
         mineFactor = 1;
-        name = "Multitool";
+        setName("Multitool");
     }
 }

@@ -15,7 +15,7 @@ public class MagnetoRepulser extends Gun{
         if(MainProgram.tick - getTickFired() >= getFireRate() /MainProgram.tickSpeed)
             setCanFire(true);
         if(isCanFire()) {
-            RadiusDamage projectile = new RadiusDamage(getDamage(), MainProgram.player.positionX, MainProgram.player.positionY, getRange());
+            RadiusDamage projectile = new RadiusDamage(getDamage(), MainProgram.player.getPositionX(), MainProgram.player.getPositionY(), getRange());
             setCanFire(false);
             setTickFired(MainProgram.tick);
         }

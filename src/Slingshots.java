@@ -10,7 +10,7 @@ public class Slingshots extends Gun
         getPerks().set(0, new HeavyRocksPerk());
         getPerks().set(1, new ThickBandPerk());
         getPerks().set(2, new StiffStickPerk());
-        name = "Slingshot";
-        family = "Primal Tech";
+        setName("Slingshot");
+        setFamily("Primal Tech");
     }
 }

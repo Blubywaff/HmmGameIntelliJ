@@ -7,6 +7,6 @@ public class NullTool extends Tool {
     public void nullToolInit() {
         useType = null;
         mineFactor = 0;
-        name = null;
+        setName(null);
     }
 }

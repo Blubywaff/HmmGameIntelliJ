@@ -9,6 +9,6 @@ public class Stone extends Resource {
     }
     
     public void stoneInit() {
-        name = "Stone";
+        setName("Stone");
     }
 }

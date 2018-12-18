@@ -9,6 +9,6 @@ public class ZombieParts extends Resource {
     }
     
     public void zombiePartsInit() {
-        name = "ZombieParts";
+        setName("ZombieParts");
     }
 }

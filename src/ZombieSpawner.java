@@ -25,7 +25,7 @@ public class ZombieSpawner extends Spawner {
     
     @Override
     public Zombie doSpawn() {
-        Zombie zombie = new Zombie(positionX, positionY);
+        Zombie zombie = new Zombie(getPositionX(), getPositionY());
         //zombie.positionX = positionX;
         //zombie.positionY = positionY;
         return zombie;

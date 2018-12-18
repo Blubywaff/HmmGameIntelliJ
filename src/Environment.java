@@ -10,20 +10,20 @@ public class Environment extends Structure {
         double mineAmount = normalYield*factor;
         if(mineAmount <= resource.amount) {
             resource.amount -= mineAmount;
-            MainProgram.player.inventory.addResource(resource.name, mineAmount);
+            MainProgram.player.getInventory().addResource(resource.getName(), mineAmount);
         } else {
             mineAmount = resource.amount;
             resource.amount = 0;
-            MainProgram.player.inventory.addResource(resource.name, mineAmount);
+            MainProgram.player.getInventory().addResource(resource.getName(), mineAmount);
         }
     }
     
     @Override
     public void checkDead() {
-        if(health <= 0 || resource.amount <= 0) {
-            isDead = true;
+        if(getHealth() <= 0 || resource.amount <= 0) {
+            setDead(true);
         } else {
-            isDead = false;
+            setDead(false);
         }
     }
 }

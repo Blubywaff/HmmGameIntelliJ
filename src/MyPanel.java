@@ -130,7 +130,7 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLACK);
         makeText("" + MainProgram.tick, 1800, 980);
         makeText("" + MainProgram.zombies.size(), 1800, 1000);
-        makeText("" + MainProgram.player.health, 1800, 1020);
+        makeText("" + MainProgram.player.getHealth(), 1800, 1020);
     }
     
     public void drawPD() {
@@ -180,15 +180,15 @@ public class MyPanel extends JPanel //implements KeyListener
         filledEllipse(5, 15, 15, 15);
         filledEllipse(30, 15, 15, 15);
         graphic.setFont(new Font("Inventory", 0, 15));
-        makeText("Head: " + MainProgram.player.inventory.getArmorHead().name, 60, 20);
-        makeText("Hands: " + MainProgram.player.inventory.getArmorHands().name, 60, 75);
-        makeText("Chest: " + MainProgram.player.inventory.getArmorChest().name, 60, 125);
-        makeText("Legs: " + MainProgram.player.inventory.getArmorLegs().name, 60, 175);
-        makeText("Feet: " + MainProgram.player.inventory.getArmorFeet().name, 60, 250);
+        makeText("Head: " + MainProgram.player.getInventory().getArmorHead().getName(), 60, 20);
+        makeText("Hands: " + MainProgram.player.getInventory().getArmorHands().getName(), 60, 75);
+        makeText("Chest: " + MainProgram.player.getInventory().getArmorChest().getName(), 60, 125);
+        makeText("Legs: " + MainProgram.player.getInventory().getArmorLegs().getName(), 60, 175);
+        makeText("Feet: " + MainProgram.player.getInventory().getArmorFeet().getName(), 60, 250);
         
-        makeText("Wood: " + MainProgram.player.inventory.getWood().amount, 950, 400);
-        makeText("Stone: " + MainProgram.player.inventory.getStone().amount, 950, 450);
-        makeText("Zombie parts: " + MainProgram.player.inventory.getzParts().amount, 950, 500);
+        makeText("Wood: " + MainProgram.player.getInventory().getWood().amount, 950, 400);
+        makeText("Stone: " + MainProgram.player.getInventory().getStone().amount, 950, 450);
+        makeText("Zombie parts: " + MainProgram.player.getInventory().getzParts().amount, 950, 500);
     }
     
     public void drawPlayerInfo() {
@@ -197,8 +197,8 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLACK);
         filledRectangle(900, 100, 100, 20);
         graphic.setColor(Color.RED);
-        int terval = (int)(MainProgram.player.defaultHealth / 100);
-        filledRectangle(900,100, (int)(MainProgram.player.health / terval), 20);
+        int terval = (int)(MainProgram.player.getDefaultHealth() / 100);
+        filledRectangle(900,100, (int)(MainProgram.player.getHealth() / terval), 20);
         
         graphic.setColor(Color.RED);
         graphic.setFont(new Font("WeaponInfo", 0, 15));
@@ -207,15 +207,15 @@ public class MyPanel extends JPanel //implements KeyListener
         } else {
             graphic.setColor(Color.RED);
         }
-        makeText("Primary Weapon: " + MainProgram.player.inventory.getGunPrimary().name, 1700, 900);
-        makeText("Secondary Weapon: " + MainProgram.player.inventory.getGunSecondary().name, 1700, 950);
+        makeText("Primary Weapon: " + MainProgram.player.getInventory().getGunPrimary().getName(), 1700, 900);
+        makeText("Secondary Weapon: " + MainProgram.player.getInventory().getGunSecondary().getName(), 1700, 950);
         if(MainProgram.player.useMode == "Tool") {
             graphic.setColor(Color.BLUE);
         } else {
             graphic.setColor(Color.RED);
         }
-        makeText("Primary Tool: " + MainProgram.player.inventory.getToolPrimary().name, 10, 900);
-        makeText("Secondary Tool: " + MainProgram.player.inventory.getToolSecondary().name, 10, 950);
+        makeText("Primary Tool: " + MainProgram.player.getInventory().getToolPrimary().getName(), 10, 900);
+        makeText("Secondary Tool: " + MainProgram.player.getInventory().getToolSecondary().getName(), 10, 950);
     }
     
     public void startDraw()
@@ -225,17 +225,17 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLACK);
         for(int i = -10000; i <= 10000; i += 50)
         {
-            line(i + (MainProgram.player.displayPosX - (int)MainProgram.player.positionX), 0, i + (MainProgram.player.displayPosX - (int)MainProgram.player.positionX), 10000);
-            line(0, i + (MainProgram.player.displayPosY - (int)MainProgram.player.positionY), 10000, i + (MainProgram.player.displayPosY - (int)MainProgram.player.positionY));
+            line(i + (MainProgram.player.getDisplayPosX() - (int) MainProgram.player.getPositionX()), 0, i + (MainProgram.player.getDisplayPosX() - (int) MainProgram.player.getPositionX()), 10000);
+            line(0, i + (MainProgram.player.getDisplayPosY() - (int) MainProgram.player.getPositionY()), 10000, i + (MainProgram.player.getDisplayPosY() - (int) MainProgram.player.getPositionY()));
         }
         //filledEllipse(475,475, 50, 50);
     }
     
     public static void drawPlayer()
     {
-        if(!MainProgram.player.isDead) {
+        if(!MainProgram.player.isDead()) {
             graphic.setColor(Color.WHITE);
-            if(MainProgram.player.isDead)
+            if(MainProgram.player.isDead())
                 graphic.setColor(Color.RED);
             filledEllipse(MainProgram.player.getDisplayX()-15, MainProgram.player.getDisplayY()-15, 30, 30);
             graphic.setColor(Color.BLUE);
@@ -249,22 +249,22 @@ public class MyPanel extends JPanel //implements KeyListener
                 line(MainProgram.player.getDisplayX(), MainProgram.player.getDisplayY(), MainProgram.player.getDisplayX() - ((int)MainProgram.player.getDirection() - 180), MainProgram.player.getDisplayY() + (270 - (int)MainProgram.player.getDirection()));
             else if(MainProgram.player.getDirection() <= 360)
                 line(MainProgram.player.getDisplayX(), MainProgram.player.getDisplayY(), MainProgram.player.getDisplayX() - (360 - (int)MainProgram.player.getDirection()), MainProgram.player.getDisplayY() - ((int)MainProgram.player.getDirection() - 270));*/
-            double finalX = MainProgram.player.displayPosX;
-            double finalY = MainProgram.player.displayPosY;
+            double finalX = MainProgram.player.getDisplayPosX();
+            double finalY = MainProgram.player.getDisplayPosY();
             while(finalX > 0 && finalX < 1920 && finalY > 0 && finalY < 1080) {
-                if(MainProgram.player.sDirect == "up") {
+                if(MainProgram.player.getsDirect() == "up") {
                     finalY--;
-                } else if(MainProgram.player.sDirect == "down"){
+                } else if(MainProgram.player.getsDirect() == "down"){
                     finalY++;
-                } else if(MainProgram.player.sDirect == "right") {
+                } else if(MainProgram.player.getsDirect() == "right") {
                     finalX++;
-                    finalY -= MainProgram.player.direction;
+                    finalY -= MainProgram.player.getDirection();
                 } else {
                     finalX--;
-                    finalY += MainProgram.player.direction;
+                    finalY += MainProgram.player.getDirection();
                 }
             }
-            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)finalX, (int)finalY);
+            line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), (int)finalX, (int)finalY);
         }
     }
     public static void drawZombies()
@@ -287,7 +287,7 @@ public class MyPanel extends JPanel //implements KeyListener
             }
         }*///zombo
         for(Zombie z : MainProgram.zombies) {
-            if(!z.isDead)
+            if(!z.isDead())
             {
                 graphic.setColor(Color.WHITE);
                 filledEllipse(z.getDisplayX()-10, z.getDisplayY()-10, 20, 20);
@@ -303,32 +303,32 @@ public class MyPanel extends JPanel //implements KeyListener
     public void drawSpawners() {
         for(ZombieSpawner zs : MainProgram.zombieSpawners) {
             graphic.setColor(Color.BLACK);
-            filledEllipse(zs.displayPosX-10, zs.displayPosY-10, 20, 20);
+            filledEllipse(zs.getDisplayPosX() -10, zs.getDisplayPosY() -10, 20, 20);
         }
     }
     
     public void drawTrees() {
         for(Tree t : MainProgram.trees) {
             graphic.setColor(Color.BLACK);
-            filledEllipse(t.displayPosX-10, t.displayPosY-10, 20, 20);
+            filledEllipse(t.getDisplayPosX() -10, t.getDisplayPosY() -10, 20, 20);
             graphic.setColor(Color.CYAN);
-            filledEllipse(t.displayPosX-9, t.displayPosY-9, 18, 18);
+            filledEllipse(t.getDisplayPosX() -9, t.getDisplayPosY() -9, 18, 18);
         }
     }
     
     public void drawRocks() {
         for(Rock r : MainProgram.rocks) {
             graphic.setColor(Color.BLACK);
-            filledEllipse(r.displayPosX-10, r.displayPosY-10, 20, 20);
+            filledEllipse(r.getDisplayPosX() -10, r.getDisplayPosY() -10, 20, 20);
             graphic.setColor(Color.GRAY);
-            filledEllipse(r.displayPosX-9, r.displayPosY-9, 18, 18);
+            filledEllipse(r.getDisplayPosX() -9, r.getDisplayPosY() -9, 18, 18);
         }
     }
     
     public void drawShoot() {
-        if(MainProgram.player.inventory.getGunBody().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+        if(MainProgram.player.getInventory().getGunBody().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(250, 0, 200));
-            filledEllipse(MainProgram.player.displayPosX-50, MainProgram.player.displayPosY-50, 100, 100);
+            filledEllipse(MainProgram.player.getDisplayPosX() -50, MainProgram.player.getDisplayPosY() -50, 100, 100);
         }
         /*
         if(MainProgram.player.inventory.gunPrimary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
@@ -344,21 +344,21 @@ public class MyPanel extends JPanel //implements KeyListener
             filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
         }
         */
-        if(MainProgram.player.inventory.getGunPrimary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+        if(MainProgram.player.getInventory().getGunPrimary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(125, 50, 255));
             for(Enemy e : hitsP) {
-                filledEllipse(e.displayPosX-15, e.displayPosY-15, 30, 30);
-                line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, e.displayPosX, e.displayPosY);
+                filledEllipse(e.getDisplayPosX() -15, e.getDisplayPosY() -15, 30, 30);
+                line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), e.getDisplayPosX(), e.getDisplayPosY());
             }
         } else {
             hitsP.clear();
         }
-        if(MainProgram.player.inventory.getGunSecondary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
+        if(MainProgram.player.getInventory().getGunSecondary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(125, 50, 255));
-            System.out.println(MainProgram.player.inventory.getGunSecondary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick);
+            System.out.println(MainProgram.player.getInventory().getGunSecondary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick);
             for(Enemy e : hitsS) {
-                filledEllipse(e.displayPosX-15, e.displayPosY-15, 30, 30);
-                line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, e.displayPosX, e.displayPosY);
+                filledEllipse(e.getDisplayPosX() -15, e.getDisplayPosY() -15, 30, 30);
+                line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), e.getDisplayPosX(), e.getDisplayPosY());
             }
         } else {
             hitsS.clear();

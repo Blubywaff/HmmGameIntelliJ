@@ -9,6 +9,6 @@ public class Copper extends Resource {
     }
     
     public void copperInit() {
-        name = "Copper";
+        setName("Copper");
     }
 }

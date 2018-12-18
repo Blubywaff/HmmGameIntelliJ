@@ -1,9 +1,9 @@
 public class RadiusDamage extends Projectile{
     public RadiusDamage(double d, double x, double y, double r)
     {
-        damage = d;
-        positionX = x;
-        positionY = y;
+        setDamage(d);
+        setPositionX(x);
+        setPositionY(y);
         setRange(r);
         checkEnemy();
     }
@@ -17,18 +17,18 @@ public class RadiusDamage extends Projectile{
         }*///zombo
         String direct = "";
         for(Zombie z : MainProgram.zombies) {
-            if(Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < getRange()) {
-                z.damage(damage);//damage
+            if(Math.sqrt((getPositionY() - z.getPositionY()) * (getPositionY() - z.getPositionY()) + (getPositionX() - z.getPositionX()) * (getPositionX() - z.getPositionX())) < getRange()) {
+                z.damage(getDamage());//damage
                 //calculate direction
-                double numer = z.positionY - positionY;
-                double denum = z.positionX - positionX;
+                double numer = z.getPositionY() - getPositionY();
+                double denum = z.getPositionX() - getPositionX();
                 double slope = numer / denum;
                 //slope = (int)(slope*1000);
                 //slope /= 1000;
                 slope = -1*slope;
-                if(z.positionX > positionX) {
+                if(z.getPositionX() > getPositionX()) {
                     direct = "right";
-                } else if(z.positionX < positionX){
+                } else if(z.getPositionX() < getPositionX()){
                     direct = "left";
                 } else if(slope == Double.NEGATIVE_INFINITY) {
                     direct = "down";
@@ -36,17 +36,17 @@ public class RadiusDamage extends Projectile{
                     direct = "up";
                 }
                 //repulse
-                while(Math.sqrt((z.positionY - positionY) * (z.positionY - positionY) + (z.positionX - positionX) * (z.positionX - positionX)) < getRange() * 2) {
+                while(Math.sqrt((z.getPositionY() - getPositionY()) * (z.getPositionY() - getPositionY()) + (z.getPositionX() - getPositionX()) * (z.getPositionX() - getPositionX())) < getRange() * 2) {
                     if(direct == "right") {
-                        z.positionX++;
-                        z.positionY -= slope;
+                        z.setPositionX(z.getPositionX() + 1);
+                        z.setPositionY(z.getPositionY() - slope);
                     } else if(direct == "left") {
-                        z.positionX--;
-                        z.positionY += slope;
+                        z.setPositionX(z.getPositionX() - 1);
+                        z.setPositionY(z.getPositionY() + slope);
                     } else if(direct == "up") {
-                        z.positionY--;
+                        z.setPositionY(z.getPositionY() - 1);
                     } else if(direct == "down") {
-                        z.positionY++;
+                        z.setPositionY(z.getPositionY() + 1);
                     }
                 }
             }

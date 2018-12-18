@@ -15,12 +15,12 @@ public class Zombie extends Enemy
     }
     public Zombie(double posX, double posY) {
         super(posX, posY);
-        positionX = posX;
+        setPositionX(posX);
         zombieInit();
     }
     
     public void zombieInit() {
-        health = 200;
-        moveScale = moveScale / 8;
+        setHealth(200);
+        setMoveScale(getMoveScale() / 8);
     }
 }

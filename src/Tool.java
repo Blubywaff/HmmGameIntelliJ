@@ -11,7 +11,7 @@ public class Tool extends Item{
                 if(isDone) {
                     break;
                 }
-                if(Math.sqrt((mY - t.displayPosY) * (mY - t.displayPosY) + (mX - t.displayPosX) * (mX - t.displayPosX)) < 10) {
+                if(Math.sqrt((mY - t.getDisplayPosY()) * (mY - t.getDisplayPosY()) + (mX - t.getDisplayPosX()) * (mX - t.getDisplayPosX())) < 10) {
                     t.mine(mineFactor);
                     isDone = true;
                 }
@@ -21,7 +21,7 @@ public class Tool extends Item{
                 if(isDone) {
                     break;
                 }
-                if(Math.sqrt((mY - r.displayPosY) * (mY - r.displayPosY) + (mX - r.displayPosX) * (mX - r.displayPosX)) < 10) {
+                if(Math.sqrt((mY - r.getDisplayPosY()) * (mY - r.getDisplayPosY()) + (mX - r.getDisplayPosX()) * (mX - r.getDisplayPosX())) < 10) {
                     r.mine(mineFactor);
                     isDone = true;
                 }
@@ -31,7 +31,7 @@ public class Tool extends Item{
                 if(isDone) {
                     break;
                 }
-                if(Math.sqrt((mY - t.displayPosY) * (mY - t.displayPosY) + (mX - t.displayPosX) * (mX - t.displayPosX)) < 10) {
+                if(Math.sqrt((mY - t.getDisplayPosY()) * (mY - t.getDisplayPosY()) + (mX - t.getDisplayPosX()) * (mX - t.getDisplayPosX())) < 10) {
                     t.mine(mineFactor);
                     isDone = true;
                 }
@@ -40,7 +40,7 @@ public class Tool extends Item{
                 if(isDone) {
                     break;
                 }
-                if(Math.sqrt((mY - r.displayPosY) * (mY - r.displayPosY) + (mX - r.displayPosX) * (mX - r.displayPosX)) < 10) {
+                if(Math.sqrt((mY - r.getDisplayPosY()) * (mY - r.getDisplayPosY()) + (mX - r.getDisplayPosX()) * (mX - r.getDisplayPosX())) < 10) {
                     r.mine(mineFactor);
                     isDone = true;
                 }

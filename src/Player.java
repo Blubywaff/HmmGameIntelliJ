@@ -14,30 +14,32 @@ public class Player extends Entity
     public Player()
     {
         super();
-        inventory.setGunPrimary(new BasicSlingshot());
-        inventory.setGunBody(new MagnetoRepulser());
-        inventory.setGunSecondary(new AdvancedSlingshot());
-        inventory.setArmorHead(new Hat());
-        inventory.setArmorChest(new Shirt());
-        inventory.setArmorLegs(new Pants());
-        inventory.setArmorFeet(new Shoes());
-        inventory.setArmorHands(new Gloves());
-        inventory.setToolPrimary(new Axe());
-        inventory.setToolSecondary(new Multitool());
+        getInventory().setGunPrimary(new BasicSlingshot());
+        getInventory().setGunBody(new MagnetoRepulser());
+        getInventory().setGunSecondary(new AdvancedSlingshot());
+        getInventory().setArmorHead(new Hat());
+        getInventory().setArmorChest(new Shirt());
+        getInventory().setArmorLegs(new Pants());
+        getInventory().setArmorFeet(new Shoes());
+        getInventory().setArmorHands(new Gloves());
+        getInventory().setToolPrimary(new Axe());
+        getInventory().setToolSecondary(new Multitool());
         calculateArmor();
-        defaultHealth = 500;
-        health = defaultHealth;
-        positionX = displayPosX = 960;
-        positionY = displayPosY = 540;
+        setDefaultHealth(500);
+        setHealth(getDefaultHealth());
+        setPositionX(960);
+        setDisplayPosX(960);
+        setPositionY(540);
+        setDisplayPosY(540);
     }
     
     public int getChangeX()
     {
-        return displayPosX - (int)positionX;
+        return getDisplayPosX() - (int) getPositionX();
     }
     public int getChangeY()
     {
-        return displayPosY - (int)positionY;
+        return getDisplayPosY() - (int) getPositionY();
     }
     
     public void playerMove(ArrayList<String> arrows)
@@ -48,21 +50,21 @@ public class Player extends Entity
     }
     
     public void firePrimary(){
-        inventory.getGunPrimary().fire(genVector());
+        getInventory().getGunPrimary().fire(genVector());
     }
     public void fireSecondary() {
-        inventory.getGunSecondary().fire(genVector());
+        getInventory().getGunSecondary().fire(genVector());
     }
     
     public void fireBody() {
-        inventory.getGunBody().fire();
+        getInventory().getGunBody().fire();
     }
     
     public void usePrimary() {
-        inventory.getToolPrimary().use();
+        getInventory().getToolPrimary().use();
     }
     public void useSecondary() {
-        inventory.getToolSecondary().use();
+        getInventory().getToolSecondary().use();
     }
     
     public void use(int mB, double mX, double mY) {
@@ -84,38 +86,38 @@ public class Player extends Entity
     
     public void use(double mX, double mY, int mB) {
         if(mB == 1) {
-            inventory.getToolPrimary().use(mX, mY);
+            getInventory().getToolPrimary().use(mX, mY);
         } else if(mB == 3) {
-            inventory.getToolSecondary().use(mX, mY);
+            getInventory().getToolSecondary().use(mX, mY);
         }
     }
     
     public void calculateDirection(double mX, double mY) {
-        double numer = mY - displayPosY;
-        double denum = mX - displayPosX;
+        double numer = mY - getDisplayPosY();
+        double denum = mX - getDisplayPosX();
         double slope = numer / denum;
         //slope = (int)(slope*1000);
         //slope /= 1000;
         slope = -1*slope;
-        if(mX > MainProgram.player.displayPosX) {
-            sDirect = "right";
-        } else if(mX < MainProgram.player.displayPosX){
-            sDirect = "left";
+        if(mX > MainProgram.player.getDisplayPosX()) {
+            setsDirect("right");
+        } else if(mX < MainProgram.player.getDisplayPosX()){
+            setsDirect("left");
         } else if(slope == Double.NEGATIVE_INFINITY) {
-            sDirect = "up";
+            setsDirect("up");
         } else if(slope == Double.POSITIVE_INFINITY) {
-            sDirect = "down";
+            setsDirect("down");
         }
-        direction = slope;
+        setDirection(slope);
     }
     
     public Vector genVector() {
-        Vector vector = new Vector(positionX, positionY, sDirect, direction);
+        Vector vector = new Vector(getPositionX(), getPositionY(), getsDirect(), getDirection());
         return vector;
     }
     
     public void calculateArmor() {
-        armor += inventory.getArmorHead().armor + inventory.getArmorChest().armor + inventory.getArmorLegs().armor + inventory.getArmorHands().armor + inventory.getArmorFeet().armor;
+        setArmor(getArmor() + getInventory().getArmorHead().armor + getInventory().getArmorChest().armor + getInventory().getArmorLegs().armor + getInventory().getArmorHands().armor + getInventory().getArmorFeet().armor);
     }
     
     public void switchMode() {

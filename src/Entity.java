@@ -1,75 +1,81 @@
 import java.util.*;
 public class Entity
 {
-    public double health;
-    public double shield;
-    public double armor;
-    public double damage = 10;
-    public double positionX;
-    public double positionY;
-    public int displayPosX;
-    public int displayPosY;
-    public double direction = 0;
-    public String sDirect = "right";
-    public static final double DIAGMOVE = 0.7071068;
-    public double moveScale = 8.0; //Default 4
-    public boolean isDead = true;
-    public int spawnTick = 0;
-    public int deathTick = -1;
-    public double defaultHealth;
-    public Inventory inventory = new Inventory();
-    public Resource drops = new ZombieParts((int)(Math.random()*5+3))/*NullResource()*/;
+    private double health;
+    private double shield;
+    private double armor;
+    private double damage = 10;
+    private double positionX;
+    private double positionY;
+    private int displayPosX;
+    private int displayPosY;
+    private double direction = 0;
+    private String sDirect = "right";
+    private static final double DIAGMOVE = 0.7071068;
+    private double moveScale = 8.0; //Default 4
+    private boolean isDead = true;
+    private int spawnTick = 0;
+    private int deathTick = -1;
+    private double defaultHealth;
+    private Inventory inventory = new Inventory();
+    private Resource drops = new ZombieParts((int)(Math.random()*5+3))/*NullResource()*/;
     
     public Entity()
     {
-        positionX = displayPosX = /*960*/ 0;
-        positionY = displayPosY = /*540*/ 0;
+        setPositionX(0);
+        setDisplayPosX(0);
+        setPositionY(0);
+        setDisplayPosY(0);
         entityInit();
     }
     
     public Entity(double posX, double posY) {
-        positionX = posX;
-        positionY = posY;
-        displayPosX = (int)positionX;
-        displayPosY = (int)positionY;
+        setPositionX(posX);
+        setPositionY(posY);
+        setDisplayPosX((int) getPositionX());
+        setDisplayPosY((int) getPositionY());
         entityInit();
     }
-    
+
+    public static double getDIAGMOVE() {
+        return DIAGMOVE;
+    }
+
     public void entityInit() {
-        armor = 1.0;//default 1
-        shield = 0.0;
-        health = 100;
-        isDead = false;
-        spawnTick = MainProgram.tick;
+        setArmor(1.0);//default 1
+        setShield(0.0);
+        setHealth(100);
+        setDead(false);
+        setSpawnTick(MainProgram.tick);
     }
     
     public void damage(double d) {
-        double realD = d / armor;
-        if(shield <= 0) {
-            health -= realD;
-        } else if(shield > 0) {
-            shield -= d;
+        double realD = d / getArmor();
+        if(getShield() <= 0) {
+            setHealth(getHealth() - realD);
+        } else if(getShield() > 0) {
+            setShield(getShield() - d);
         }
     }
     
     public void checkDead()
     {
-        if(this.health <= 0) {
-            isDead  = true;
-            if(deathTick == -1) {
-                deathTick = MainProgram.tick;
-                MainProgram.player.inventory.getzParts().amount += drops.amount;
+        if(this.getHealth() <= 0) {
+            setDead(true);
+            if(getDeathTick() == -1) {
+                setDeathTick(MainProgram.tick);
+                MainProgram.player.getInventory().getzParts().amount += getDrops().amount;
             }
         } else {
-            isDead = false;
-            deathTick = -1;
+            setDead(false);
+            setDeathTick(-1);
         }
     }
     
     public void fixDisplayCoords()
     {
-        displayPosX = (int) (positionX - (MainProgram.player.positionX - MainProgram.player.displayPosX));
-        displayPosY = (int) (positionY - (MainProgram.player.positionY - MainProgram.player.displayPosY));
+        setDisplayPosX((int) (getPositionX() - (MainProgram.player.getPositionX() - MainProgram.player.getDisplayPosX())));
+        setDisplayPosY((int) (getPositionY() - (MainProgram.player.getPositionY() - MainProgram.player.getDisplayPosY())));
     }
     /*
     public void changeDirection(int d)
@@ -83,73 +89,27 @@ public class Entity
     */
     public double getPosX()
     {
-        return positionX;
+        return getPositionX();
     }
     public double getPosY()
     { 
-        return positionY;
+        return getPositionY();
     }
     
     public int getDisplayX()
     {
-        return displayPosX;
+        return getDisplayPosX();
     }
     public int getDisplayY()
     {
-        return displayPosY;
+        return getDisplayPosY();
     }
     
     public double getDirection()
     {
         return direction;
     }
-    
-    /*public void move(String arrow)
-    {
-        int moveDirection = direction;
-        if(arrow == "up")
-        {
-            //do nothing
-        }
-        else if(arrow == "right")
-        {
-            moveDirection += 90;//change direction to 90 degrees relative to actual direction
-        }
-        else if(arrow == "down")
-        {
-            moveDirection += 180;
-        }
-        else if(arrow == "left")
-        {
-            moveDirection += 270;
-        }
-        if(moveDirection >= 360)
-        {
-            moveDirection -= 360;
-        }
-        if(moveDirection <= 90)
-        {
-            positionX += (moveDirection)/moveScale;
-            positionY -= (90 - moveDirection)/moveScale;
-        }
-        else if(moveDirection <= 180 && moveDirection > 90)
-        {
-            positionX += (180 - moveDirection)/moveScale;
-            positionY += (moveDirection - 90)/moveScale;
-        }
-        else if(moveDirection <= 270 && moveDirection > 180)
-        {
-            positionX -= (moveDirection - 180)/moveScale;
-            positionY += (270 - moveDirection)/moveScale;
-        }
-        else if(moveDirection <= 359 && moveDirection > 270)
-        {
-            positionX -= (360 - moveDirection)/moveScale;
-            positionY -= (moveDirection - 270)/moveScale;
-        }
-        //System.out.println(positionX + " - " + positionY);
-        MainProgram.myFrame.panelRefresh();
-    }*/
+
     public void move(ArrayList<String> arrows) {
         /*if(arrows.contains("up") && arrows.contains("right") && arrows.contains("down") && arrows.contains("left"));
         else if(arrows.contains("left") && arrows.contains("right")) {
@@ -216,22 +176,22 @@ public class Entity
         else if(arrows.contains("up") && arrows.contains("right")) {
             //positionX += DIAGMOVE * moveScale;
             //positionY -= DIAGMOVE * moveScale;
-            move(DIAGMOVE, "right");
+            move(getDIAGMOVE(), "right");
         }
         else if(arrows.contains("right") && arrows.contains("down")) {
             //positionX += DIAGMOVE * moveScale;
             //positionY += DIAGMOVE * moveScale;
-            move(-1*DIAGMOVE, "right");
+            move(-1* getDIAGMOVE(), "right");
         }
         else if(arrows.contains("down") && arrows.contains("left")) {
             //positionX -= DIAGMOVE * moveScale;
             //positionY += DIAGMOVE * moveScale;
-            move(DIAGMOVE, "left");
+            move(getDIAGMOVE(), "left");
         }
         else if(arrows.contains("left") && arrows.contains("up")) {
             //positionX -= DIAGMOVE * moveScale;
             //positionY -= DIAGMOVE * moveScale;
-            move(-1*DIAGMOVE, "left");
+            move(-1* getDIAGMOVE(), "left");
         }
         else if(arrows.contains("up")) {
             move(0, "up");
@@ -249,106 +209,147 @@ public class Entity
     
     public void move(double vector, String direction) {
         if(direction == "down"){
-            positionY += 1 * moveScale;
+            setPositionY(getPositionY() + 1 * getMoveScale());
         } else if(direction == "up") {
-            positionY -= 1 * moveScale;
+            setPositionY(getPositionY() - 1 * getMoveScale());
         } else if(direction == "right") {
-            positionY -= vector * moveScale;
-            positionX += 1 * moveScale;
+            setPositionY(getPositionY() - vector * getMoveScale());
+            setPositionX(getPositionX() + 1 * getMoveScale());
         } else if(direction == "left") {
-            positionY += vector * moveScale;
-            positionX -= 1 * moveScale;
+            setPositionY(getPositionY() + vector * getMoveScale());
+            setPositionX(getPositionX() - 1 * getMoveScale());
         }
     }
-    
-    public void displayMove(ArrayList<String> arrows)//useless function
-    {
-        /*int moveDirection = MainProgram.player.direction;
-        if(arrow == "up")
-        {
-            //do nothing
-        }
-        else if(arrow == "right")
-        {
-            moveDirection += 90;//change direction to 90 degrees relative to actual direction
-        }
-        else if(arrow == "down")
-        {
-            moveDirection += 180;
-        }
-        else if(arrow == "left")
-        {
-            moveDirection += 270;
-        }
-        if(moveDirection >= 360)
-        {
-            moveDirection -= 360;
-        }
-        if(moveDirection <= 90)
-        {
-            displayPosX += (moveDirection)/moveScale;
-            displayPosY -= (90 - moveDirection)/moveScale;
-        }
-        else if(moveDirection <= 180 && moveDirection > 90)
-        {
-            displayPosX += (180 - moveDirection)/moveScale;
-            displayPosY += (moveDirection - 90)/moveScale;
-        }
-        else if(moveDirection <= 270 && moveDirection > 180)
-        {
-            displayPosX -= (moveDirection - 180)/moveScale;
-            displayPosY += (270 - moveDirection)/moveScale;
-        }
-        else if(moveDirection <= 359 && moveDirection > 270)
-        {
-            displayPosX -= (360 - moveDirection)/moveScale;
-            displayPosY -= (moveDirection - 270)/moveScale;
-        }
-        MainProgram.myFrame.panelRefresh();*/
-        /*if(arrows.contains("up") && arrows.contains("right") && arrows.contains("down") && arrows.contains("left"));
-        else if(arrows.contains("left") && arrows.contains("right")) {
-            if(arrows.contains("down")) {
-                displayPosY += moveScale;
-            }
-            else if(arrows.contains("up")) {
-                displayPosY -= moveScale;
-            }
-        }
-        else if(arrows.contains("up") && arrows.contains("down")) {
-            if(arrows.contains("right")) {
-                displayPosX += moveScale;
-            }
-            else if(arrows.contains("left")) {
-                displayPosX -= moveScale;
-            }
-        }
-        else if(arrows.contains("up") && arrows.contains("right")) {
-            displayPosX += DIAGMOVE * moveScale;
-            displayPosY -= DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("right") && arrows.contains("down")) {
-            displayPosX += DIAGMOVE * moveScale;
-            displayPosY += DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("down") && arrows.contains("left")) {
-            displayPosX -= (DIAGMOVE * moveScale);
-            displayPosY += (DIAGMOVE * moveScale);
-        }
-        else if(arrows.contains("left") && arrows.contains("up")) {
-            displayPosX -= DIAGMOVE * moveScale;
-            displayPosY -= DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("up")) {
-            displayPosY -= moveScale;
-        }
-        else if(arrows.contains("right")) {
-            displayPosX += moveScale;
-        }
-        else if(arrows.contains("down")) {
-            displayPosY += moveScale;
-        }
-        else if(arrows.contains("left")) {
-            displayPosX -= moveScale;
-        }*/
+
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public double getShield() {
+        return shield;
+    }
+
+    public void setShield(double shield) {
+        this.shield = shield;
+    }
+
+    public double getArmor() {
+        return armor;
+    }
+
+    public void setArmor(double armor) {
+        this.armor = armor;
+    }
+
+    public double getDamage() {
+        return damage;
+    }
+
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public double getPositionX() {
+        return positionX;
+    }
+
+    public void setPositionX(double positionX) {
+        this.positionX = positionX;
+    }
+
+    public double getPositionY() {
+        return positionY;
+    }
+
+    public void setPositionY(double positionY) {
+        this.positionY = positionY;
+    }
+
+    public int getDisplayPosX() {
+        return displayPosX;
+    }
+
+    public void setDisplayPosX(int displayPosX) {
+        this.displayPosX = displayPosX;
+    }
+
+    public int getDisplayPosY() {
+        return displayPosY;
+    }
+
+    public void setDisplayPosY(int displayPosY) {
+        this.displayPosY = displayPosY;
+    }
+
+    public void setDirection(double direction) {
+        this.direction = direction;
+    }
+
+    public String getsDirect() {
+        return sDirect;
+    }
+
+    public void setsDirect(String sDirect) {
+        this.sDirect = sDirect;
+    }
+
+    public double getMoveScale() {
+        return moveScale;
+    }
+
+    public void setMoveScale(double moveScale) {
+        this.moveScale = moveScale;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
+    public int getSpawnTick() {
+        return spawnTick;
+    }
+
+    public void setSpawnTick(int spawnTick) {
+        this.spawnTick = spawnTick;
+    }
+
+    public int getDeathTick() {
+        return deathTick;
+    }
+
+    public void setDeathTick(int deathTick) {
+        this.deathTick = deathTick;
+    }
+
+    public double getDefaultHealth() {
+        return defaultHealth;
+    }
+
+    public void setDefaultHealth(double defaultHealth) {
+        this.defaultHealth = defaultHealth;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Resource getDrops() {
+        return drops;
+    }
+
+    public void setDrops(Resource drops) {
+        this.drops = drops;
     }
 }

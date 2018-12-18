@@ -9,6 +9,6 @@ public class Iron extends Resource{
     }
     
     public void ironInit() {
-        name = "Iron";
+        setName("Iron");
     }
 }

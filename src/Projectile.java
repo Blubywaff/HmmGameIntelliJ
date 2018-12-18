@@ -23,7 +23,7 @@ public class Projectile extends Entity
     }*/
     
     public Projectile(double d, double r, Vector v) {
-        damage = d;
+        setDamage(d);
         setRange(r);
         setVector(v);
         checkEnemy();
@@ -53,8 +53,8 @@ public class Projectile extends Entity
                 if(numHit >= getPenetration()) {
                     break;
                 }
-                if(Math.sqrt((coord[1] - z.positionY) * (coord[1] - z.positionY) + (coord[0] - z.positionX) * (coord[0] - z.positionX)) < 5) {
-                    z.damage(damage);
+                if(Math.sqrt((coord[1] - z.getPositionY()) * (coord[1] - z.getPositionY()) + (coord[0] - z.getPositionX()) * (coord[0] - z.getPositionX())) < 5) {
+                    z.damage(getDamage());
                     numHit++;
                     if(isPrimary()) {
                         MyPanel.hitsP.add(z);
@@ -68,8 +68,8 @@ public class Projectile extends Entity
                 if(numHit >= getPenetration()) {
                     break;
                 }
-                if(Math.sqrt((coord[1] - zs.positionY) * (coord[1] - zs.positionY) + (coord[0] - zs.positionX) * (coord[0] - zs.positionX)) < 5) {
-                    zs.damage(damage);
+                if(Math.sqrt((coord[1] - zs.getPositionY()) * (coord[1] - zs.getPositionY()) + (coord[0] - zs.getPositionX()) * (coord[0] - zs.getPositionX())) < 5) {
+                    zs.damage(getDamage());
                     numHit++;
                     if(isPrimary()) {
                         MyPanel.hitsP.add(zs);

@@ -2,7 +2,6 @@ import javax.swing.*;
 //import java.awt.*; //not used
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.io.*;
 
 public class MainProgram {
     public static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
@@ -18,21 +17,21 @@ public class MainProgram {
         player = new Player();
         for(int i = 0; i < 3; i++) {
             ZombieSpawner zombieSpawner = new ZombieSpawner();
-            zombieSpawner.positionX = Math.random()*2000;
-            zombieSpawner.positionY = Math.random()*1000;
+            zombieSpawner.setPositionX(Math.random()*2000);
+            zombieSpawner.setPositionY(Math.random()*1000);
             zombieSpawners.add(zombieSpawner);
         }
         for(int i = 0; i < 25; i++) {
             Tree t = new Tree();
-            t.positionX = Math.random()*2000;
-            t.positionY = Math.random()*1000;
+            t.setPositionX(Math.random()*2000);
+            t.setPositionY(Math.random()*1000);
             trees.add(t);
             //System.out.println(t.positionX + " - " + t.positionY);
         }
         for(int i = 0; i < 25; i++) {
             Rock r = new Rock();
-            r.positionX = Math.random()*2000;
-            r.positionY = Math.random()*1000;
+            r.setPositionX(Math.random()*2000);
+            r.setPositionY(Math.random()*1000);
             rocks.add(r);
         }
         

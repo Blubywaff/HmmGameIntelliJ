@@ -7,6 +7,6 @@ public class Picaxe extends Tool {
     public void picaxeInit() {
         useType = "Stone";
         mineFactor = 1;
-        name = "Picaxe";
+        setName("Picaxe");
     }
 }

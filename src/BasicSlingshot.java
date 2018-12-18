@@ -16,6 +16,6 @@ public class BasicSlingshot extends Slingshots
     }
     
     public void basicSlingshotInit() {
-        name = "Basic Slingshot";
+        setName("Basic Slingshot");
     }
 }

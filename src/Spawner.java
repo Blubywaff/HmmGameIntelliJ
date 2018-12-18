@@ -5,7 +5,8 @@ public class Spawner extends Enemy{
     public double tickSpawn = 0;
     public Spawner() {
         super();
-        positionX = positionY = 0;
+        setPositionX(0);
+        setPositionY(0);
         spawnerInit();
     }
     
@@ -17,7 +18,7 @@ public class Spawner extends Enemy{
     public void spawnerInit() {
         speed = 0;
         type = "generic";
-        health = 500;
+        setHealth(500);
     }
     
     public void spawn() {

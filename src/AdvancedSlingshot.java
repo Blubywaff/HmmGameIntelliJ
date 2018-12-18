@@ -13,6 +13,6 @@ public class AdvancedSlingshot extends Slingshots {
     }
     
     public void advancedSlingshotInit() {
-        name = "Advanced Slingshot";
+        setName("Advanced Slingshot");
     }
 }

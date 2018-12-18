@@ -9,6 +9,6 @@ public class Wood extends Resource {
     }
     
     public void woodInit() {
-        name = "Wood";
+        setName("Wood");
     }
 }

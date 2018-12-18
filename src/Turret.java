@@ -18,15 +18,15 @@ public class Turret extends Building {
         double direction = 0;
         double dist = 10000;
         for(Zombie z : MainProgram.zombies) {
-            if(Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < gun.getRange() && Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < dist) {
-                double numer = MainProgram.player.positionY - z.positionY;
-                double denum = MainProgram.player.positionY - z.positionX;
+            if(Math.sqrt((getPositionY() - z.getPositionY()) * (getPositionY() - z.getPositionY()) + (getPositionX() - z.getPositionX()) * (getPositionX() - z.getPositionX())) < gun.getRange() && Math.sqrt((getPositionY() - z.getPositionY()) * (getPositionY() - z.getPositionY()) + (getPositionX() - z.getPositionX()) * (getPositionX() - z.getPositionX())) < dist) {
+                double numer = MainProgram.player.getPositionY() - z.getPositionY();
+                double denum = MainProgram.player.getPositionY() - z.getPositionX();
                 double slope = numer / denum;
                 slope = -1*slope;
-                if(z.positionX > positionX) {
+                if(z.getPositionX() > getPositionX()) {
                     sDirect = "right";
                 }
-                else if(z.positionX < positionY){
+                else if(z.getPositionX() < getPositionY()){
                     sDirect = "left";
                 } else if(slope == Double.NEGATIVE_INFINITY) {
                     sDirect = "up";
@@ -36,7 +36,7 @@ public class Turret extends Building {
                 direction = slope;
             }
         }
-        vector = new Vector(MainProgram.player.positionX, MainProgram.player.positionY, sDirect, direction);
+        vector = new Vector(MainProgram.player.getPositionX(), MainProgram.player.getPositionY(), sDirect, direction);
         return vector;
     }
 }
