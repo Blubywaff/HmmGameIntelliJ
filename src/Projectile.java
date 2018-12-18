@@ -52,11 +52,10 @@ public class Projectile extends Entity
                 if(numHit >= penetration) {
                     break;
                 }
-                hitX = z.displayPosX;
-                hitY = z.displayPosY;
                 if(Math.sqrt((coord[1] - z.positionY) * (coord[1] - z.positionY) + (coord[0] - z.positionX) * (coord[0] - z.positionX)) < 5) {
                     z.damage(damage);
                     numHit++;
+                    MyPanel.z = z;
                     break;
                 }
             }
@@ -64,11 +63,11 @@ public class Projectile extends Entity
                 if(numHit >= penetration) {
                     break;
                 }
-                hitX = zs.displayPosX;
-                hitY = zs.displayPosY;
                 if(Math.sqrt((coord[1] - zs.positionY) * (coord[1] - zs.positionY) + (coord[0] - zs.positionX) * (coord[0] - zs.positionX)) < 5) {
                     zs.damage(damage);
                     numHit++;
+                    hitX = zs.displayPosX;
+                    hitY = zs.displayPosY;
                     break;
                 }
             }

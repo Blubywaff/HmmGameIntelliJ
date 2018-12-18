@@ -11,7 +11,6 @@ public class Player extends Entity
     private int direction = 0;*/
     public String useMode = "Tool";
     
-    
     public Player()
     {
         super();
@@ -24,7 +23,7 @@ public class Player extends Entity
         inventory.armorFeet = new Shoes();
         inventory.armorHands = new Gloves();
         inventory.toolPrimary = new Axe();
-        inventory.toolSecondary = new Picaxe();
+        inventory.toolSecondary = new Multitool();
         calculateArmor();
         defaultHealth = 500;
         health = defaultHealth;

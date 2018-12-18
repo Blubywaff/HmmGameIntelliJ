@@ -71,6 +71,7 @@ public class Gun extends Item
             tickFired = MainProgram.tick;
             hitX = projectile.hitX;
             hitY = projectile.hitY;
+            System.out.println(MainProgram.tick);
         }
     }
 }

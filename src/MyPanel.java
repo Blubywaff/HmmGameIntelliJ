@@ -10,6 +10,7 @@ public class MyPanel extends JPanel //implements KeyListener
     public static ArrayList<String[]> commands = new ArrayList<String[]>();
     public final static Color GREEN1 = new Color(0, 150, 0);
     public final static int SHOWSHOOT = 200; //millisecond
+    public static Zombie z = new Zombie();
     
     public MyPanel()
     {
@@ -330,11 +331,14 @@ public class MyPanel extends JPanel //implements KeyListener
         }
         if(MainProgram.player.inventory.gunPrimary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(125, 50, 255));
-            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY);
+            //line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY);
+            //filledEllipse((int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY, 50, 50);
+            filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
         }
         if(MainProgram.player.inventory.gunSecondary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(0, 50, 200));
-            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunSecondary.hitX, (int)MainProgram.player.inventory.gunSecondary.hitY);
+            //line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunSecondary.hitX, (int)MainProgram.player.inventory.gunSecondary.hitY);
+            filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
         }
     }
     
