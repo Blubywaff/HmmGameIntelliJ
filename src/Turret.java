@@ -18,7 +18,7 @@ public class Turret extends Building {
         double direction = 0;
         double dist = 10000;
         for(Zombie z : MainProgram.zombies) {
-            if(Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < gun.range && Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < dist) {
+            if(Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < gun.getRange() && Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < dist) {
                 double numer = MainProgram.player.positionY - z.positionY;
                 double denum = MainProgram.player.positionY - z.positionX;
                 double slope = numer / denum;

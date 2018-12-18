@@ -20,7 +20,7 @@ public class ArmorTurret extends ArmorModule {
         double direction = 0;
         double dist = 10000;
         for(Zombie z : MainProgram.zombies) {
-            if(Math.sqrt((MainProgram.player.positionY - z.positionY) * (MainProgram.player.positionY - z.positionY) + (MainProgram.player.positionX - z.positionX) * (MainProgram.player.positionX - z.positionX)) < gun.range && Math.sqrt((MainProgram.player.positionY - z.positionY) * (MainProgram.player.positionY - z.positionY) + (MainProgram.player.positionX - z.positionX) * (MainProgram.player.positionX - z.positionX)) < dist) {
+            if(Math.sqrt((MainProgram.player.positionY - z.positionY) * (MainProgram.player.positionY - z.positionY) + (MainProgram.player.positionX - z.positionX) * (MainProgram.player.positionX - z.positionX)) < gun.getRange() && Math.sqrt((MainProgram.player.positionY - z.positionY) * (MainProgram.player.positionY - z.positionY) + (MainProgram.player.positionX - z.positionX) * (MainProgram.player.positionX - z.positionX)) < dist) {
                 double numer = MainProgram.player.positionY - z.positionY;
                 double denum = MainProgram.player.positionY - z.positionX;
                 double slope = numer / denum;

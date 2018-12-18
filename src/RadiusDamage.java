@@ -4,7 +4,7 @@ public class RadiusDamage extends Projectile{
         damage = d;
         positionX = x;
         positionY = y;
-        range = r;
+        setRange(r);
         checkEnemy();
     }
     
@@ -17,7 +17,7 @@ public class RadiusDamage extends Projectile{
         }*///zombo
         String direct = "";
         for(Zombie z : MainProgram.zombies) {
-            if(Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < range) {
+            if(Math.sqrt((positionY - z.positionY) * (positionY - z.positionY) + (positionX - z.positionX) * (positionX - z.positionX)) < getRange()) {
                 z.damage(damage);//damage
                 //calculate direction
                 double numer = z.positionY - positionY;
@@ -36,7 +36,7 @@ public class RadiusDamage extends Projectile{
                     direct = "up";
                 }
                 //repulse
-                while(Math.sqrt((z.positionY - positionY) * (z.positionY - positionY) + (z.positionX - positionX) * (z.positionX - positionX)) < range * 2) {
+                while(Math.sqrt((z.positionY - positionY) * (z.positionY - positionY) + (z.positionX - positionX) * (z.positionX - positionX)) < getRange() * 2) {
                     if(direct == "right") {
                         z.positionX++;
                         z.positionY -= slope;

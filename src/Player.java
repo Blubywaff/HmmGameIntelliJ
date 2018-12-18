@@ -14,16 +14,16 @@ public class Player extends Entity
     public Player()
     {
         super();
-        inventory.gunPrimary = new BasicSlingshot();
-        inventory.gunBody = new MagnetoRepulser();
-        inventory.gunSecondary = new AdvancedSlingshot();
-        inventory.armorHead = new Hat();
-        inventory.armorChest = new Shirt();
-        inventory.armorLegs = new Pants();
-        inventory.armorFeet = new Shoes();
-        inventory.armorHands = new Gloves();
-        inventory.toolPrimary = new Axe();
-        inventory.toolSecondary = new Multitool();
+        inventory.setGunPrimary(new BasicSlingshot());
+        inventory.setGunBody(new MagnetoRepulser());
+        inventory.setGunSecondary(new AdvancedSlingshot());
+        inventory.setArmorHead(new Hat());
+        inventory.setArmorChest(new Shirt());
+        inventory.setArmorLegs(new Pants());
+        inventory.setArmorFeet(new Shoes());
+        inventory.setArmorHands(new Gloves());
+        inventory.setToolPrimary(new Axe());
+        inventory.setToolSecondary(new Multitool());
         calculateArmor();
         defaultHealth = 500;
         health = defaultHealth;
@@ -48,21 +48,21 @@ public class Player extends Entity
     }
     
     public void firePrimary(){
-        inventory.gunPrimary.fire(genVector());
+        inventory.getGunPrimary().fire(genVector());
     }
     public void fireSecondary() {
-        inventory.gunSecondary.fire(genVector());
+        inventory.getGunSecondary().fire(genVector());
     }
     
     public void fireBody() {
-        inventory.gunBody.fire();
+        inventory.getGunBody().fire();
     }
     
     public void usePrimary() {
-        inventory.toolPrimary.use();
+        inventory.getToolPrimary().use();
     }
     public void useSecondary() {
-        inventory.toolSecondary.use();
+        inventory.getToolSecondary().use();
     }
     
     public void use(int mB, double mX, double mY) {
@@ -84,9 +84,9 @@ public class Player extends Entity
     
     public void use(double mX, double mY, int mB) {
         if(mB == 1) {
-            inventory.toolPrimary.use(mX, mY);
+            inventory.getToolPrimary().use(mX, mY);
         } else if(mB == 3) {
-            inventory.toolSecondary.use(mX, mY);
+            inventory.getToolSecondary().use(mX, mY);
         }
     }
     
@@ -115,7 +115,7 @@ public class Player extends Entity
     }
     
     public void calculateArmor() {
-        armor += inventory.armorHead.armor + inventory.armorChest.armor + inventory.armorLegs.armor + inventory.armorHands.armor + inventory.armorFeet.armor;
+        armor += inventory.getArmorHead().armor + inventory.getArmorChest().armor + inventory.getArmorLegs().armor + inventory.getArmorHands().armor + inventory.getArmorFeet().armor;
     }
     
     public void switchMode() {

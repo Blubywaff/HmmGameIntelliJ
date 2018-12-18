@@ -58,7 +58,7 @@ public class Entity
             isDead  = true;
             if(deathTick == -1) {
                 deathTick = MainProgram.tick;
-                MainProgram.player.inventory.zParts.amount += drops.amount; 
+                MainProgram.player.inventory.getzParts().amount += drops.amount;
             }
         } else {
             isDead = false;

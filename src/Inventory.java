@@ -2,45 +2,176 @@ import java.util.*;
 
 public class Inventory
 {
-    public ArrayList<Object> items =  new ArrayList<Object>();
-    public ZombieParts zParts = new ZombieParts(0);
-    public Wood wood = new Wood(0);
-    public Stone stone = new Stone(0);
-    public Gun gunPrimary;
-    public Gun gunSecondary;
-    public Gun gunBody;
-    public Armor armorHead;
-    public Armor armorChest;
-    public Armor armorLegs;
-    public Armor armorFeet;
-    public Armor armorHands;
-    public Tool toolPrimary;
-    public Tool toolSecondary;
-    public int numAM = 0;
-    public ArmorModule[] armorModules = new ArmorModule[numAM];
-    public Inventory()
-    {
+    private ArrayList<Object> items =  new ArrayList<Object>();
+    private ZombieParts zParts = new ZombieParts(0);
+    private Wood wood = new Wood(0);
+    private Stone stone = new Stone(0);
+    private Gun gunPrimary;
+    private Gun gunSecondary;
+    private Gun gunBody;
+    private Armor armorHead;
+    private Armor armorChest;
+    private Armor armorLegs;
+    private Armor armorFeet;
+    private Armor armorHands;
+    private Tool toolPrimary;
+    private Tool toolSecondary;
+    private int numAM = 0;
+    private ArmorModule[] armorModules = new ArmorModule[getNumAM()];
+
+    public Inventory() {
     }
-    public Gun getPrimary() {
-        return gunPrimary;
-    }
+
     public void addResource(String t, double a) {
         if(t == "Wood") {
-            wood.amount += a;
+            getWood().amount += a;
         } else if(t == "Stone") {
-            stone.amount += a;
+            getStone().amount += a;
         } else if(t == "ZombieParts") {
-            zParts.amount += a;
+            getzParts().amount += a;
         }
     }
     public void fixAMs() {
-        ArmorModule[] temp = armorModules;
-        numAM = armorHands.numAM + armorHead.numAM + armorChest.numAM + armorLegs.numAM + armorFeet.numAM;
-        armorModules = new ArmorModule[numAM];
+        ArmorModule[] temp = getArmorModules();
+        setNumAM(getArmorHands().numAM + getArmorHead().numAM + getArmorChest().numAM + getArmorLegs().numAM + getArmorFeet().numAM);
+        setArmorModules(new ArmorModule[getNumAM()]);
         int nums = 0;
         for(ArmorModule a : temp) {
-            armorModules[nums] = a;
+            getArmorModules()[nums] = a;
             nums++;
         }
     }
+
+    public Gun getPrimary() {
+        return getGunPrimary();
+    }
+
+    public ArrayList<Object> getItems() {
+        return items;
+    }
+
+    public ZombieParts getzParts() {
+        return zParts;
+    }
+
+    public Wood getWood() {
+        return wood;
+    }
+
+    public Stone getStone() {
+        return stone;
+    }
+
+    public Gun getGunPrimary() {
+        return gunPrimary;
+    }
+
+    public Gun getGunSecondary() {
+        return gunSecondary;
+    }
+
+    public Gun getGunBody() {
+        return gunBody;
+    }
+
+    public Armor getArmorHead() {
+        return armorHead;
+    }
+
+    public Armor getArmorChest() {
+        return armorChest;
+    }
+
+    public Armor getArmorLegs() {
+        return armorLegs;
+    }
+
+    public Armor getArmorFeet() {
+        return armorFeet;
+    }
+
+    public Armor getArmorHands() {
+        return armorHands;
+    }
+
+    public Tool getToolPrimary() {
+        return toolPrimary;
+    }
+
+    public Tool getToolSecondary() {
+        return toolSecondary;
+    }
+
+    public int getNumAM() {
+        return numAM;
+    }
+
+    public ArmorModule[] getArmorModules() {
+        return armorModules;
+    }
+
+    public void setItems(ArrayList<Object> items) {
+        this.items = items;
+    }
+
+    public void setzParts(ZombieParts zParts) {
+        this.zParts = zParts;
+    }
+
+    public void setWood(Wood wood) {
+        this.wood = wood;
+    }
+
+    public void setStone(Stone stone) {
+        this.stone = stone;
+    }
+
+    public void setGunPrimary(Gun gunPrimary) {
+        this.gunPrimary = gunPrimary;
+    }
+
+    public void setGunSecondary(Gun gunSecondary) {
+        this.gunSecondary = gunSecondary;
+    }
+
+    public void setGunBody(Gun gunBody) {
+        this.gunBody = gunBody;
+    }
+
+    public void setArmorHead(Armor armorHead) {
+        this.armorHead = armorHead;
+    }
+
+    public void setArmorChest(Armor armorChest) {
+        this.armorChest = armorChest;
+    }
+
+    public void setArmorLegs(Armor armorLegs) {
+        this.armorLegs = armorLegs;
+    }
+
+    public void setArmorFeet(Armor armorFeet) {
+        this.armorFeet = armorFeet;
+    }
+
+    public void setArmorHands(Armor armorHands) {
+        this.armorHands = armorHands;
+    }
+
+    public void setToolPrimary(Tool toolPrimary) {
+        this.toolPrimary = toolPrimary;
+    }
+
+    public void setToolSecondary(Tool toolSecondary) {
+        this.toolSecondary = toolSecondary;
+    }
+
+    public void setNumAM(int numAM) {
+        this.numAM = numAM;
+    }
+
+    public void setArmorModules(ArmorModule[] armorModules) {
+        this.armorModules = armorModules;
+    }
+
 } 

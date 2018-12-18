@@ -2,22 +2,22 @@ public class MagnetoRepulser extends Gun{
     public MagnetoRepulser()
     {
         super();
-        defaultDamage = 100;
-        damage = defaultDamage;
-        defaultRange = 50;
-        range = defaultRange;
-        defaultFireRate = 10000;//miliseconds delay
-        fireRate = defaultFireRate;
+        setDefaultDamage(100);
+        setDamage(getDefaultDamage());
+        setDefaultRange(50);
+        setRange(getDefaultRange());
+        setDefaultFireRate(10000);//miliseconds delay
+        setFireRate(getDefaultFireRate());
     }
     
     //@Override
     public void fire() {
-        if(MainProgram.tick - tickFired >= fireRate/MainProgram.tickSpeed)
-            canFire = true;
-        if(canFire) {
-            RadiusDamage projectile = new RadiusDamage(damage, MainProgram.player.positionX, MainProgram.player.positionY, range);
-            canFire = false;
-            tickFired = MainProgram.tick;
+        if(MainProgram.tick - getTickFired() >= getFireRate() /MainProgram.tickSpeed)
+            setCanFire(true);
+        if(isCanFire()) {
+            RadiusDamage projectile = new RadiusDamage(getDamage(), MainProgram.player.positionX, MainProgram.player.positionY, getRange());
+            setCanFire(false);
+            setTickFired(MainProgram.tick);
         }
     }
 }
