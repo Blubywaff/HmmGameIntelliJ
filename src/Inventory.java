@@ -42,6 +42,20 @@ public class Inventory
         }
     }
 
+    public void addAM(ArmorModule am) {
+        if(armorModules.length != 0) {
+            int num = 0;
+            for (int i = 0; i < armorModules.length; i++) {
+                if (armorModules[i] == null) {
+                    num = i;
+                }
+            }
+            armorModules[num] = am;
+        } else {
+            System.out.println("Invalid");
+        }
+    }
+
     public Gun getPrimary() {
         return getGunPrimary();
     }
@@ -174,4 +188,4 @@ public class Inventory
         this.armorModules = armorModules;
     }
 
-} 
+}

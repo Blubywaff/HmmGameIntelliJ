@@ -8,13 +8,12 @@ public class Gun extends Item
     private double range;
     private double defaultAccuracy;
     private double accuracy;
-    //public String type;
     private double defaultFireRate;
     private double fireRate;
-    //public String family;
+    private int defaultProjectileNum;
+    private int projectileNum;
     private boolean canFire = true;
     private int tickFired = -100000;
-    //public String name;
     private double hitX;
     private double hitY;
     
@@ -179,5 +178,21 @@ public class Gun extends Item
 
     public StiffStickPerk getStiffStick() {
         return stiffStick;
+    }
+
+    public int getDefaultProjectileNum() {
+        return defaultProjectileNum;
+    }
+
+    public void setDefaultProjectileNum(int defaultProjectileNum) {
+        this.defaultProjectileNum = defaultProjectileNum;
+    }
+
+    public int getProjectileNum() {
+        return projectileNum;
+    }
+
+    public void setProjectileNum(int projectileNum) {
+        this.projectileNum = projectileNum;
     }
 }

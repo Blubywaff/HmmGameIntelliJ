@@ -77,16 +77,7 @@ public class Entity
         setDisplayPosX((int) (getPositionX() - (MainProgram.player.getPositionX() - MainProgram.player.getDisplayPosX())));
         setDisplayPosY((int) (getPositionY() - (MainProgram.player.getPositionY() - MainProgram.player.getDisplayPosY())));
     }
-    /*
-    public void changeDirection(int d)
-    {
-        direction = d;
-        if(direction >= 360)
-            direction -= 360;
-        else if(direction <= 0)
-            direction += 360;
-    }
-    */
+
     public double getPosX()
     {
         return getPositionX();
@@ -111,51 +102,6 @@ public class Entity
     }
 
     public void move(ArrayList<String> arrows) {
-        /*if(arrows.contains("up") && arrows.contains("right") && arrows.contains("down") && arrows.contains("left"));
-        else if(arrows.contains("left") && arrows.contains("right")) {
-            if(arrows.contains("down")) {
-                positionY += moveScale;
-            }
-            else if(arrows.contains("up")) {
-                positionY -= moveScale;
-            }
-        }
-        else if(arrows.contains("up") && arrows.contains("down")) {
-            if(arrows.contains("right")) {
-                positionX += moveScale;
-            }
-            else if(arrows.contains("left")) {
-                positionX -= moveScale;
-            }
-        }
-        else if(arrows.contains("up") && arrows.contains("right")) {
-            positionX += DIAGMOVE * moveScale;
-            positionY -= DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("right") && arrows.contains("down")) {
-            positionX += DIAGMOVE * moveScale;
-            positionY += DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("down") && arrows.contains("left")) {
-            positionX -= DIAGMOVE * moveScale;
-            positionY += DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("left") && arrows.contains("up")) {
-            positionX -= DIAGMOVE * moveScale;
-            positionY -= DIAGMOVE * moveScale;
-        }
-        else if(arrows.contains("up")) {
-            positionY -= moveScale;
-        }
-        else if(arrows.contains("right")) {
-            positionX += moveScale;
-        }
-        else if(arrows.contains("down")) {
-            positionY += moveScale;
-        }
-        else if(arrows.contains("left")) {
-            positionX -= moveScale;
-        }*///original based on string arraylist\
         if(arrows.contains("up") && arrows.contains("right") && arrows.contains("down") && arrows.contains("left"));
         else if(arrows.contains("left") && arrows.contains("right")) {
             if(arrows.contains("down")) {
@@ -174,23 +120,15 @@ public class Entity
             }
         }
         else if(arrows.contains("up") && arrows.contains("right")) {
-            //positionX += DIAGMOVE * moveScale;
-            //positionY -= DIAGMOVE * moveScale;
             move(getDIAGMOVE(), "right");
         }
         else if(arrows.contains("right") && arrows.contains("down")) {
-            //positionX += DIAGMOVE * moveScale;
-            //positionY += DIAGMOVE * moveScale;
             move(-1* getDIAGMOVE(), "right");
         }
         else if(arrows.contains("down") && arrows.contains("left")) {
-            //positionX -= DIAGMOVE * moveScale;
-            //positionY += DIAGMOVE * moveScale;
             move(getDIAGMOVE(), "left");
         }
         else if(arrows.contains("left") && arrows.contains("up")) {
-            //positionX -= DIAGMOVE * moveScale;
-            //positionY -= DIAGMOVE * moveScale;
             move(-1* getDIAGMOVE(), "left");
         }
         else if(arrows.contains("up")) {

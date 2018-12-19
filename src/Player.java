@@ -4,11 +4,6 @@
 import java.util.*;
 public class Player extends Entity
 {
-    /*private double health;
-    private double armor;
-    private int positionX;
-    private int positionY;
-    private int direction = 0;*/
     public String useMode = "Tool";
     
     public Player()
@@ -24,6 +19,7 @@ public class Player extends Entity
         getInventory().setArmorHands(new Gloves());
         getInventory().setToolPrimary(new Axe());
         getInventory().setToolSecondary(new Multitool());
+        getInventory().addAM(new ArmorTurret());
         calculateArmor();
         setDefaultHealth(500);
         setHealth(getDefaultHealth());
@@ -45,8 +41,6 @@ public class Player extends Entity
     public void playerMove(ArrayList<String> arrows)
     {
         move(arrows);
-        //Fixer.fixZombieDisplay();
-        //Fixer.fixPlayerTakingDamage();
     }
     
     public void firePrimary(){
@@ -96,8 +90,6 @@ public class Player extends Entity
         double numer = mY - getDisplayPosY();
         double denum = mX - getDisplayPosX();
         double slope = numer / denum;
-        //slope = (int)(slope*1000);
-        //slope /= 1000;
         slope = -1*slope;
         if(mX > MainProgram.player.getDisplayPosX()) {
             setsDirect("right");
@@ -127,75 +119,5 @@ public class Player extends Entity
             useMode = "Tool";
         }
     }
-    
-    /*
-    public void changeDirection(int d)
-    {
-        direction = d;
-        if(direction >= 360)
-            direction -= 360;
-        else if(direction <= 0)
-            direction += 360;
-    }
-    
-    public int getPosX()
-    {
-        return positionX;
-    }
-    public int getPosY()
-    {
-        return positionY;
-    }
-    
-    public int getDirection()
-    {
-        return direction;
-    }
-    
-    public void move(String arrow)
-    {
-        int moveDirection = direction;
-        if(arrow == "up")
-        {
-            //do nothing
-        }
-        else if(arrow == "right")
-        {
-            moveDirection += 90;//change direction to 90 degrees relative to actual direction
-        }
-        else if(arrow == "down")
-        {
-            moveDirection += 180;
-        }
-        else if(arrow == "left")
-        {
-            moveDirection += 270;
-        }
-        if(moveDirection >= 360)
-        {
-            moveDirection -= 360;
-        }
-        if(moveDirection <= 90)
-        {
-            positionX += (moveDirection);
-            positionY -= (90 - moveDirection);
-        }
-        else if(moveDirection <= 180 && moveDirection > 90)
-        {
-            positionX += (180 - moveDirection);
-            positionY += (moveDirection - 90);
-        }
-        else if(moveDirection <= 270 && moveDirection > 180)
-        {
-            positionX -= (moveDirection - 180);
-            positionY += (270 - moveDirection);
-        }
-        else if(moveDirection <= 359 && moveDirection > 270)
-        {
-            positionX -= (360 - moveDirection);
-            positionY -= (moveDirection - 270);
-        }
-        MainProgram.myFrame.panelRefresh();
-    }
-    */
+
 }

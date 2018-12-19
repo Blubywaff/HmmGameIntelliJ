@@ -8,6 +8,8 @@ public class AdvancedSlingshot extends Slingshots {
         setRange(getDefaultRange());
         setDefaultFireRate(FileManager.advancedSlingshot("defaultFireRate"));//milliseconds delay
         setFireRate(getDefaultFireRate());
+        setDefaultProjectileNum((int)FileManager.advancedSlingshot("defaultProjectileNum"));
+        setProjectileNum(getDefaultProjectileNum());
         endInit();
         advancedSlingshotInit();
     }

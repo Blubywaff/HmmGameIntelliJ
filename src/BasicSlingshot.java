@@ -9,8 +9,8 @@ public class BasicSlingshot extends Slingshots
         setRange(getDefaultRange());
         setDefaultFireRate(FileManager.basicSlingshot("defaultFireRate"));//miliseconds delay
         setFireRate(getDefaultFireRate());
-        //defaultAccuracy = 1;
-        //accuracy = defaultAccuracy;
+        setDefaultProjectileNum((int)FileManager.basicSlingshot("defaultProjectileNum"));
+        setProjectileNum(getDefaultProjectileNum());
         endInit();
         basicSlingshotInit();
     }

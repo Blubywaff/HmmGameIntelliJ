@@ -9,18 +9,8 @@ public class Projectile extends Entity
     private double hitY;
     private boolean isPrimary = true;
     
-    public Projectile()
-    {
+    public Projectile() {
     }
-    
-    /*public Projectile(double d, double x, double y, double r)
-    {
-        damage = d;
-        positionX = x;
-        positionY = y;
-        range = r;
-        checkEnemy();
-    }*/
     
     public Projectile(double d, double r, Vector v) {
         setDamage(d);
