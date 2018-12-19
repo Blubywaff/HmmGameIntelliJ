@@ -35,13 +35,6 @@ public class Enemy extends Entity
         }
     }
     
-    /*public void randMove() {
-        double moveX = Math.random()*400-200;
-        double moveY = Math.random()*400-200;
-        positionX += moveX;
-        positionY += moveY;
-    }*/
-    
     public void aiMove() {
         ArrayList<String> moveTPArrs = new ArrayList<String>();
         if(isDead());

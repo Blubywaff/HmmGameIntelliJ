@@ -125,20 +125,6 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
     public void keyReleased(KeyEvent keyEvent)
     {     
         keysDown.remove(new Integer(keyEvent.getKeyCode()));
-        /*if(keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-            arrows.remove("up");
-        }
-        else if(keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-            arrows.remove("down");
-        }
-        else if(keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            arrows.remove("right");
-        }
-        else if(keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            arrows.remove("left");
-        }*/
-        //Fixer.fixAll();
-        // keysDown.clear();
     }
     
     @Override
@@ -166,11 +152,6 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
     @Override
     public void mousePressed(MouseEvent mouseEvent)
     {
-        /*MainProgram.zombies[0].positionX = mouseEvent.getX()-4;
-        MainProgram.zombies[0].positionY = mouseEvent.getY()-25;
-        System.out.println(mouseEvent.getX()-5);
-        System.out.println(mouseEvent.getY()-25);
-        panelRefresh();*/
         Point point = MouseInfo.getPointerInfo().getLocation();
         double x = point.getX();
         double y = point.getY();
@@ -191,20 +172,6 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
                 }
             }
         } else if(dMode == "singleplayer") {
-            /*if(MainProgram.player.useMode == "Weapon") {
-                if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON1))) {
-                    MainProgram.player.firePrimary();
-                } else if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON3))) {
-                    MainProgram.player.fireSecondary();
-                }
-            }
-            else if(MainProgram.player.useMode == "Tool") {
-                if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON1))) {
-                    MainProgram.player.usePrimary();
-                } else if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON3))) {
-                    MainProgram.player.useSecondary();
-                }
-            }*/
             if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON1))) {
                 MainProgram.player.use(1, getMX(), getMY());
             }

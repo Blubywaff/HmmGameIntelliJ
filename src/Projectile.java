@@ -16,7 +16,16 @@ public class Projectile extends Entity
         setDamage(d);
         setRange(r);
         setVector(v);
+        init();
         checkEnemy();
+    }
+
+    public void init() {
+        if (this.equals(MainProgram.player.getInventory().getGunPrimary())) {
+            setPrimary(true);
+        } else {
+            setPrimary(false);
+        }
     }
     
     public void checkEnemy()
@@ -43,7 +52,7 @@ public class Projectile extends Entity
                 if(numHit >= getPenetration()) {
                     break;
                 }
-                if(Math.sqrt((coord[1] - z.getPositionY()) * (coord[1] - z.getPositionY()) + (coord[0] - z.getPositionX()) * (coord[0] - z.getPositionX())) < 5) {
+                if(Math.sqrt((coord[1] - z.getPositionY()) * (coord[1] - z.getPositionY()) + (coord[0] - z.getPositionX()) * (coord[0] - z.getPositionX())) < 5 && !z.isDead()) {
                     z.damage(getDamage());
                     numHit++;
                     if(isPrimary()) {
@@ -58,7 +67,7 @@ public class Projectile extends Entity
                 if(numHit >= getPenetration()) {
                     break;
                 }
-                if(Math.sqrt((coord[1] - zs.getPositionY()) * (coord[1] - zs.getPositionY()) + (coord[0] - zs.getPositionX()) * (coord[0] - zs.getPositionX())) < 5) {
+                if(Math.sqrt((coord[1] - zs.getPositionY()) * (coord[1] - zs.getPositionY()) + (coord[0] - zs.getPositionX()) * (coord[0] - zs.getPositionX())) < 5 && !zs.isDead()) {
                     zs.damage(getDamage());
                     numHit++;
                     if(isPrimary()) {

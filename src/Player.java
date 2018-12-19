@@ -9,9 +9,9 @@ public class Player extends Entity
     public Player()
     {
         super();
-        getInventory().setGunPrimary(new BasicSlingshot());
+        getInventory().setGunPrimary(new AdvancedSlingshot());
         getInventory().setGunBody(new MagnetoRepulser());
-        getInventory().setGunSecondary(new AdvancedSlingshot());
+        getInventory().setGunSecondary(new BasicSlingshot());
         getInventory().setArmorHead(new Hat());
         getInventory().setArmorChest(new Shirt());
         getInventory().setArmorLegs(new Pants());

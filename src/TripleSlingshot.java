@@ -10,9 +10,9 @@ public class TripleSlingshot extends Slingshots{
         setDefaultProjectileNum((int)FileManager.tripleSlingshot("defaultProjectileNum"));
         setProjectileNum(getDefaultProjectileNum());
         endInit();
-        doubleSlingshotInit();
+        tripleSlingshotInit();
     }
-    public void doubleSlingshotInit() {
-        setName("Double Slingshot");
+    public void tripleSlingshotInit() {
+        setName("Triple Slingshot");
     }
 }

@@ -1,0 +1,4 @@
+defaultDamage - 45
+defaultRange - 100
+defaultFireRate - 7000
+defaultProjectileNum - 3

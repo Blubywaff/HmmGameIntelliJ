@@ -10,7 +10,7 @@ public class MagnetoRepulser extends Gun{
         setFireRate(getDefaultFireRate());
     }
     
-    //@Override
+    @Override
     public void fire() {
         if(MainProgram.tick - getTickFired() >= getFireRate() /MainProgram.tickSpeed)
             setCanFire(true);

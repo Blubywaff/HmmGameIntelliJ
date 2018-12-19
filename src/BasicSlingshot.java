@@ -1,7 +1,5 @@
-public class BasicSlingshot extends Slingshots
-{   
-    public BasicSlingshot()
-    {
+public class BasicSlingshot extends Slingshots {
+    public BasicSlingshot() {
         super();
         setDefaultDamage(FileManager.basicSlingshot("defaultDamage"));
         setDamage(getDefaultDamage());

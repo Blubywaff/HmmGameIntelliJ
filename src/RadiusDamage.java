@@ -10,11 +10,6 @@ public class RadiusDamage extends Projectile{
     
     @Override
     public void checkEnemy() {
-        /*for(int i = 0; i < MainProgram.zombieNum; i++) {
-            if(Math.sqrt((positionY - MainProgram.zombies[i].positionY) * (positionY - MainProgram.zombies[i].positionY) + (positionX - MainProgram.zombies[i].positionX) * (positionX - MainProgram.zombies[i].positionX)) < range) {
-                MainProgram.zombies[i].health -= damage;
-            }
-        }*///zombo
         String direct = "";
         for(Zombie z : MainProgram.zombies) {
             if(Math.sqrt((getPositionY() - z.getPositionY()) * (getPositionY() - z.getPositionY()) + (getPositionX() - z.getPositionX()) * (getPositionX() - z.getPositionX())) < getRange()) {
@@ -23,8 +18,6 @@ public class RadiusDamage extends Projectile{
                 double numer = z.getPositionY() - getPositionY();
                 double denum = z.getPositionX() - getPositionX();
                 double slope = numer / denum;
-                //slope = (int)(slope*1000);
-                //slope /= 1000;
                 slope = -1*slope;
                 if(z.getPositionX() > getPositionX()) {
                     direct = "right";

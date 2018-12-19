@@ -1,9 +1,23 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class FileManager {
     public static String configFileName = "ConfigData.txt";
     public static String basePath = "ConfigData\\";
-    
+    public static void init() {
+        try {
+            basePath = new File(".").getCanonicalPath();
+            boolean contains = basePath.contains("/");
+            if(contains) {
+                basePath += "/src/ConfigData/";
+            } else {
+                basePath += "\\src\\ConfigData\\";
+            }
+            System.out.println("SUCCESS");
+        } catch(IOException e) {
+            System.out.println("FAILED");
+        }
+    }
     public static String readConfig() {
         try {
             FileReader reader = new FileReader(configFileName);

@@ -1,6 +1,8 @@
 import javax.swing.*;
 //import java.awt.*; //not used
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainProgram {
@@ -14,28 +16,8 @@ public class MainProgram {
     public static final int tickSpeed = 20;
     public static void main(String[] args)
     {
-        player = new Player();
-        for(int i = 0; i < 3; i++) {
-            ZombieSpawner zombieSpawner = new ZombieSpawner();
-            zombieSpawner.setPositionX(Math.random()*2000);
-            zombieSpawner.setPositionY(Math.random()*1000);
-            zombieSpawners.add(zombieSpawner);
-        }
-        for(int i = 0; i < 25; i++) {
-            Tree t = new Tree();
-            t.setPositionX(Math.random()*2000);
-            t.setPositionY(Math.random()*1000);
-            trees.add(t);
-            //System.out.println(t.positionX + " - " + t.positionY);
-        }
-        for(int i = 0; i < 25; i++) {
-            Rock r = new Rock();
-            r.setPositionX(Math.random()*2000);
-            r.setPositionY(Math.random()*1000);
-            rocks.add(r);
-        }
-        
-        myFrame = new MyFrame("HMMMMMMMMMM");
+        init();
+
         Timer timer = new Timer(tickSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -49,5 +31,29 @@ public class MainProgram {
         });
         timer.setRepeats(true);
         timer.start();
+    }
+
+    public static void init() {
+        FileManager.init();
+        player = new Player();
+        for(int i = 0; i < 3; i++) {
+            ZombieSpawner zombieSpawner = new ZombieSpawner();
+            zombieSpawner.setPositionX(Math.random()*2000);
+            zombieSpawner.setPositionY(Math.random()*1000);
+            zombieSpawners.add(zombieSpawner);
+        }
+        for(int i = 0; i < 25; i++) {
+            Tree t = new Tree();
+            t.setPositionX(Math.random()*2000);
+            t.setPositionY(Math.random()*1000);
+            trees.add(t);
+        }
+        for(int i = 0; i < 25; i++) {
+            Rock r = new Rock();
+            r.setPositionX(Math.random()*2000);
+            r.setPositionY(Math.random()*1000);
+            rocks.add(r);
+        }
+        myFrame = new MyFrame("HMMMMMMMMMM");
     }
 }

@@ -50,17 +50,16 @@ public class Gun extends Item
     public void fire() {}
     
     public void fire(Vector v) {
-        if(MainProgram.tick - getTickFired() >= getFireRate() /MainProgram.tickSpeed)
+        if(MainProgram.tick - getTickFired() >= getFireRate() / MainProgram.tickSpeed)
             setCanFire(true);
         if(isCanFire()) {
-            Projectile projectile = new Projectile(getDamage(), getRange(), v);
-            if(this.equals(MainProgram.player.getInventory().getGunPrimary())) {
-                projectile.setPrimary(true);
-            } else {
-                projectile.setPrimary(false);
+            ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+            for (int i = 0; i < getProjectileNum(); i++) {
+                Projectile projectile = new Projectile(getDamage(), getRange(), v);
+                projectiles.add(projectile);
             }
-            setCanFire(false);
-            setTickFired(MainProgram.tick);
+                setCanFire(false);
+                setTickFired(MainProgram.tick);
         }
     }
 

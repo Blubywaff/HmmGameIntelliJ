@@ -269,23 +269,6 @@ public class MyPanel extends JPanel //implements KeyListener
     }
     public static void drawZombies()
     {
-        /*for(int i = 0; i < MainProgram.zombieNum; i++)
-        {
-            MainProgram.zombies[i] = new Zombie();
-            MainProgram.zombies[i].positionX = (int) (Math.random()*1000);
-            MainProgram.zombies[i].positionY = (int) (Math.random()*1000);
-            System.out.println(MainProgram.zombies[i].positionX + "\n" + MainProgram.zombies[i].positionY);
-        }*/
-        /*for(int i = 0; i < MainProgram.zombieNum; i++)
-        {
-            if(!MainProgram.zombies[i].isDead)
-            {
-                graphic.setColor(Color.WHITE);
-                filledEllipse(MainProgram.zombies[i].getDisplayX()-10, MainProgram.zombies[i].getDisplayY()-10, 20, 20);
-                graphic.setColor(Color.RED);
-                filledEllipse(MainProgram.zombies[i].getDisplayX()-9, MainProgram.zombies[i].getDisplayY()-9, 18, 18);
-            }
-        }*///zombo
         for(Zombie z : MainProgram.zombies) {
             if(!z.isDead())
             {
@@ -328,22 +311,8 @@ public class MyPanel extends JPanel //implements KeyListener
     public void drawShoot() {
         if(MainProgram.player.getInventory().getGunBody().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(250, 0, 200));
-            filledEllipse(MainProgram.player.getDisplayPosX() -50, MainProgram.player.getDisplayPosY() -50, 100, 100);
+            filledEllipse(MainProgram.player.getDisplayPosX() - 50, MainProgram.player.getDisplayPosY() - 50, 100, 100);
         }
-        /*
-        if(MainProgram.player.inventory.gunPrimary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
-            graphic.setColor(new Color(125, 50, 255));
-            //line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY);
-            //filledEllipse((int)MainProgram.player.inventory.gunPrimary.hitX, (int)MainProgram.player.inventory.gunPrimary.hitY, 50, 50);
-            filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
-            line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, z.displayPosX, z.displayPosY);
-        }
-        if(MainProgram.player.inventory.gunSecondary.tickFired + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
-            graphic.setColor(new Color(0, 50, 200));
-            //line(MainProgram.player.displayPosX, MainProgram.player.displayPosY, (int)MainProgram.player.inventory.gunSecondary.hitX, (int)MainProgram.player.inventory.gunSecondary.hitY);
-            filledEllipse(z.displayPosX-15, z.displayPosY-15, 30, 30);
-        }
-        */
         if(MainProgram.player.getInventory().getGunPrimary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
             graphic.setColor(new Color(125, 50, 255));
             for(Enemy e : hitsP) {
@@ -354,8 +323,7 @@ public class MyPanel extends JPanel //implements KeyListener
             hitsP.clear();
         }
         if(MainProgram.player.getInventory().getGunSecondary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick) {
-            graphic.setColor(new Color(125, 50, 255));
-            System.out.println(MainProgram.player.getInventory().getGunSecondary().getTickFired() + (SHOWSHOOT/MainProgram.tickSpeed) >= MainProgram.tick);
+            graphic.setColor(new Color(0, 50, 255));
             for(Enemy e : hitsS) {
                 filledEllipse(e.getDisplayPosX() -15, e.getDisplayPosY() -15, 30, 30);
                 line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), e.getDisplayPosX(), e.getDisplayPosY());
@@ -364,49 +332,5 @@ public class MyPanel extends JPanel //implements KeyListener
             hitsS.clear();
         }
     }
-    
-    /*
-    @Override
-    public void keyPressed(KeyEvent keyEvent)
-    {
-        int keyCode = keyEvent.getKeyCode();
-        if(keyCode == KeyEvent.VK_UP)
-        {
-            playerMove("up");
-        }
-        else if(keyCode == KeyEvent.VK_DOWN)
-        {
-            playerMove("down");
-        }
-        else if(keyCode == KeyEvent.VK_RIGHT)
-        {
-            playerMove("right");
-        }
-        else if(keyCode == KeyEvent.VK_LEFT)
-        {
-            playerMove("left");
-        }
-    }
-    
-    @Override
-    public void keyReleased(KeyEvent keyEvent)
-    {     
-    }
-    
-    @Override
-    public void keyTyped(KeyEvent keyEvent)
-    {
-        int keyCode = keyEvent.getKeyCode();
-        switch(keyCode)
-        {
-            case KeyEvent.VK_UP:
-                playerMove("up");
-                break;
-            case KeyEvent.VK_DOWN:
-                break;
-        }
-        if(keyCode == KeyEvent.VK_UP)
-            System.out.print("hi");
-    }
-    */
+
 }
