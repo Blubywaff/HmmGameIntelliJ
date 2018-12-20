@@ -55,7 +55,7 @@ public class Gun extends Item
         if(isCanFire()) {
             ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
             for (int i = 0; i < getProjectileNum(); i++) {
-                Projectile projectile = new Projectile(getDamage(), getRange(), v);
+                Projectile projectile = new Projectile(getDamage(), getRange(), v, this);
                 projectiles.add(projectile);
             }
                 setCanFire(false);

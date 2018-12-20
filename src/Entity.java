@@ -56,6 +56,7 @@ public class Entity
         } else if(getShield() > 0) {
             setShield(getShield() - d);
         }
+        checkDead();
     }
     
     public void checkDead()

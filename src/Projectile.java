@@ -8,20 +8,22 @@ public class Projectile extends Entity
     private double hitX;
     private double hitY;
     private boolean isPrimary = true;
+    private Gun firedFrom;
     
     public Projectile() {
     }
     
-    public Projectile(double d, double r, Vector v) {
+    public Projectile(double d, double r, Vector v, Gun g) {
         setDamage(d);
         setRange(r);
         setVector(v);
+        setFiredFrom(g);
         init();
         checkEnemy();
     }
 
     public void init() {
-        if (this.equals(MainProgram.player.getInventory().getGunPrimary())) {
+        if (getFiredFrom().equals(MainProgram.player.getInventory().getGunPrimary())) {
             setPrimary(true);
         } else {
             setPrimary(false);
@@ -138,5 +140,13 @@ public class Projectile extends Entity
 
     public void setPrimary(boolean primary) {
         isPrimary = primary;
+    }
+
+    public Gun getFiredFrom() {
+        return firedFrom;
+    }
+
+    public void setFiredFrom(Gun firedFrom) {
+        this.firedFrom = firedFrom;
     }
 }
