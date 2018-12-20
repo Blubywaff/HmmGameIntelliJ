@@ -19,6 +19,9 @@ public class Entity
     private double defaultHealth;
     private Inventory inventory = new Inventory();
     private Resource drops = new ZombieParts((int)(Math.random()*5+3))/*NullResource()*/;
+    public double regenFactor = 0;
+    public int regenSpeed = 0;
+    public int regenTick = -10000;
     
     public Entity()
     {
@@ -39,6 +42,14 @@ public class Entity
 
     public static double getDIAGMOVE() {
         return DIAGMOVE;
+    }
+    
+    public void regen() {
+        if(getHealth() + regenFactor <= getDefaultHealth() && !isDead() && MainProgram.tick >= regenTick + regenSpeed/MainProgram.tickSpeed) {
+            setHealth(getHealth() + regenFactor);
+        } else if(!isDead() && MainProgram.tick >= regenTick + regenSpeed/MainProgram.tickSpeed) {
+            setHealth(getDefaultHealth());
+        }
     }
 
     public void entityInit() {

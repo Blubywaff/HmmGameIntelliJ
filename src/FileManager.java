@@ -8,12 +8,17 @@ public class FileManager {
         try {
             basePath = new File(".").getCanonicalPath();
             boolean contains = basePath.contains("/");
-            if(contains) {
+            boolean contains2 = basePath.contains("src");
+            if (contains && contains2) {
+                basePath += "/ConfigData/";
+            } else if (contains) {
                 basePath += "/src/ConfigData/";
-            } else {
+            } else if (contains2) {
+                basePath += "\\ConfigData\\";
+            } else  {
                 basePath += "\\src\\ConfigData\\";
             }
-            System.out.println("SUCCESS");
+            //System.out.println("SUCCESS");
         } catch(IOException e) {
             System.out.println("FAILED");
         }

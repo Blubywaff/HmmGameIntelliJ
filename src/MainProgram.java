@@ -10,6 +10,7 @@ public class MainProgram {
     public static ArrayList<ZombieSpawner> zombieSpawners = new ArrayList<ZombieSpawner>();
     public static ArrayList<Tree> trees = new ArrayList<Tree>();
     public static ArrayList<Rock> rocks = new ArrayList<Rock>();
+    public static ArrayList<Turret> turrets = new ArrayList<Turret>();
     public static MyFrame myFrame;
     public static Player player;
     public static int tick = 0;

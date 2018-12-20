@@ -1,7 +1,7 @@
 public class Turret extends Building {
     public Gun gun;
     public Turret() {
-        gun = new NullGun();
+        gun = new TripleSlingshot();
     }
     
     public void fire() {

@@ -58,8 +58,8 @@ public class Gun extends Item
                 Projectile projectile = new Projectile(getDamage(), getRange(), v, this);
                 projectiles.add(projectile);
             }
-                setCanFire(false);
-                setTickFired(MainProgram.tick);
+            setCanFire(false);
+            setTickFired(MainProgram.tick);
         }
     }
 

@@ -19,7 +19,11 @@ public class Player extends Entity
         getInventory().setArmorHands(new Gloves());
         getInventory().setToolPrimary(new Axe());
         getInventory().setToolSecondary(new Multitool());
-        getInventory().addAM(new ArmorTurret());
+        getInventory().addAM(new ManualArmorTurret());
+        getInventory().addAM(new ManualArmorTurret());
+        getInventory().addAM(new ManualArmorTurret());
+        getInventory().addAM(new ManualArmorTurret());
+        getInventory().turrets.add(new Turret());
         calculateArmor();
         setDefaultHealth(500);
         setHealth(getDefaultHealth());
@@ -27,6 +31,8 @@ public class Player extends Entity
         setDisplayPosX(960);
         setPositionY(540);
         setDisplayPosY(540);
+        regenFactor = 1;
+        regenSpeed = 1000;
     }
     
     public int getChangeX()
@@ -86,6 +92,18 @@ public class Player extends Entity
         }
     }
     
+    public void fireATs() {
+        ArrayList<ManualArmorTurret> mats = new ArrayList<ManualArmorTurret>();
+        for(ArmorModule am : getInventory().getArmorModules()) {
+            if(am instanceof ManualArmorTurret) {
+                mats.add((ManualArmorTurret)am);
+            }
+        }
+        for(ManualArmorTurret mat : mats) {
+            mat.fire();
+        }
+    }
+    
     public void calculateDirection(double mX, double mY) {
         double numer = mY - getDisplayPosY();
         double denum = mX - getDisplayPosX();
@@ -118,6 +136,15 @@ public class Player extends Entity
         } else if(useMode == "Gun") {
             useMode = "Tool";
         }
+    }
+    
+    public void placeTurret(double mX, double mY) {
+        Turret turret = getInventory().turrets.get(0);
+        turret.setPositionX(mX + getChangeX());
+        turret.setPositionY(mY + getChangeY());
+        turret.fixDisplayCoords();
+        MainProgram.turrets.add(turret);
+        getInventory().turrets.remove(0);
     }
 
 }

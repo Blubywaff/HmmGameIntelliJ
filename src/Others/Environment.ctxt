@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Environment
-comment1.params=
-comment1.target=Environment()
-comment2.params=factor
-comment2.target=void\ mine(double)
-comment3.params=
-comment3.target=void\ checkDead()
-numComments=4

@@ -3,13 +3,16 @@ public class ArmorTurret extends ArmorModule {
     public ArmorTurret() {
         gun = new BasicSlingshot();
     }
+
+    @Override
+    public void doStuff() {
+        fire();
+    }
     
-    //@Override
     public void fire() {
         fire(calcVector());
     }
     
-    //@Override
     public void fire(Vector v) {
         gun.fire(v);
     }

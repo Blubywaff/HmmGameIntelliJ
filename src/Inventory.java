@@ -6,20 +6,38 @@ public class Inventory
     private ZombieParts zParts = new ZombieParts(0);
     private Wood wood = new Wood(0);
     private Stone stone = new Stone(0);
-    private Gun gunPrimary;
-    private Gun gunSecondary;
-    private Gun gunBody;
-    private Armor armorHead;
-    private Armor armorChest;
-    private Armor armorLegs;
-    private Armor armorFeet;
-    private Armor armorHands;
-    private Tool toolPrimary;
-    private Tool toolSecondary;
+    private Gun gunPrimary = new NullGun();
+    private Gun gunSecondary = new NullGun();
+    private Gun gunBody = new NullGun();
+    private Armor armorHead = new NullArmor();
+    private Armor armorChest = new NullArmor();
+    private Armor armorLegs = new NullArmor();
+    private Armor armorFeet = new NullArmor();
+    private Armor armorHands = new NullArmor();
+    private Tool toolPrimary = new NullTool();
+    private Tool toolSecondary = new NullTool();
     private int numAM = 0;
     private ArmorModule[] armorModules = new ArmorModule[getNumAM()];
+    public ArrayList<Turret> turrets = new ArrayList<Turret>();
 
     public Inventory() {
+        init();
+    }
+
+    public void init() {
+        fixAMs();
+    }
+
+    public void backfillAMs() {
+        for(int i = 0; i < getNumAM(); i++) {
+            if(getArmorModules()[i] == null) {
+                getArmorModules()[i] = new NullArmorModule();
+            }
+        }
+    }
+
+    public void checkAMNum() {
+        setNumAM(getArmorHands().numAM + getArmorHead().numAM + getArmorChest().numAM + getArmorLegs().numAM + getArmorFeet().numAM);
     }
 
     public void addResource(String t, double a) {
@@ -33,8 +51,9 @@ public class Inventory
     }
     public void fixAMs() {
         ArmorModule[] temp = getArmorModules();
-        setNumAM(getArmorHands().numAM + getArmorHead().numAM + getArmorChest().numAM + getArmorLegs().numAM + getArmorFeet().numAM);
+        checkAMNum();
         setArmorModules(new ArmorModule[getNumAM()]);
+        backfillAMs();
         int nums = 0;
         for(ArmorModule a : temp) {
             getArmorModules()[nums] = a;
@@ -43,10 +62,11 @@ public class Inventory
     }
 
     public void addAM(ArmorModule am) {
+        fixAMs();
         if(armorModules.length != 0) {
             int num = 0;
             for (int i = 0; i < armorModules.length; i++) {
-                if (armorModules[i] == null) {
+                if (armorModules[i] instanceof NullArmorModule) {
                     num = i;
                 }
             }

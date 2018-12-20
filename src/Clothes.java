@@ -14,6 +14,6 @@ public class Clothes extends Armor {
         perks.set(2, new QualityWeavePerk());
         armor = 0.001;
         setFamily("Shit Equipment");
-        numAM = 0;
+        numAM = 1;
     }
 }

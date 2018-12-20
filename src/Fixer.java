@@ -20,10 +20,23 @@ public class Fixer
         fixSpawnerDisplay();
         fixEnvironmentDisplay();
         fixPlayerTakingDamage();
+        fixRegen();
+        checkAMs();
         checkPD();
         MainProgram.myFrame.panelRefresh();
         MainProgram.myFrame.fixPlayerDirection();
     }
+    
+    public static void fixRegen() {
+        MainProgram.player.regen();
+    }
+
+    public static void checkAMs() {
+        for(ArmorModule am : MainProgram.player.getInventory().getArmorModules()) {
+            am.doStuff();
+        }
+    }
+
     public static void fixZombies() {
         for(Zombie z : MainProgram.zombies) {
             z.aiMove();
