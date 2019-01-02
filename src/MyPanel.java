@@ -375,17 +375,15 @@ public class MyPanel extends JPanel //implements KeyListener
                 if((z.getDisplayPosX() > 1920 || z.getDisplayPosX() < 0) || (z.getDisplayPosY() > 1080 || z.getDisplayPosY() < 0)) {
                     if((z.getDisplayPosX() > 1920 || z.getDisplayPosX() < 0) && z.getDisplayPosY() > 0 && z.getDisplayPosY() < 1080) {
                         if (z.getDisplayPosX() > 1920) {
-                            filledEllipse((1920) - 15, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 15, 30, 30);
-                            //line(0, (int)y, 1920, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()));
-                            //filledTriangle((1920) - 15, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 15, );
+                            filledEllipse((1920) - 5, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 5, 10, 10);
                         } else if(z.getDisplayPosX() < 0) {
-                            filledEllipse((0) - 15, (int)(slope * (0 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 15, 30, 30);
+                            filledEllipse((0) - 5, (int)(slope * (0 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 5, 10, 10);
                         }
                     } else if((z.getDisplayPosY() > 1080 || z.getDisplayPosY() < 0) && z.getDisplayPosX() > 0 && z.getDisplayPosX() < 1920) {
                         if(z.getDisplayPosY() > 1080) {
-                            filledEllipse((int)((1080 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 15, 1080,  30, 30);
+                            filledEllipse((int)((1080 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 5, (1080) - 5,  10, 10);
                         } else if(z.getDisplayPosY() < 0) {
-                            filledEllipse((int)((0 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 15, 0,  30, 30);
+                            filledEllipse((int)((0 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 5, (0) - 5,  10, 10);
                         }
                     } else if(z.getDisplayPosX() < 0 && z.getDisplayPosY() < 0) {
                         line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), z.getDisplayPosX(), z.getDisplayPosY());
