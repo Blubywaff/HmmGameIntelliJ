@@ -34,6 +34,8 @@ public class MyPanel extends JPanel //implements KeyListener
             drawTrees();
             drawRocks();
             drawShoot();
+            drawTurrets();
+            drawEnemyTracker();
         } else if(MainProgram.myFrame.dMode == "player dead") {
             startDraw();
             drawPlayer();
@@ -123,6 +125,13 @@ public class MyPanel extends JPanel //implements KeyListener
     public static void makeText(String text, int x, int y)
     {
         graphic.drawString(text, x, y);
+    }
+    
+    public void drawTurrets() {
+        graphic.setColor(Color.BLUE);
+        for(Turret t : MainProgram.turrets) {
+            filledRectangle(t.getDisplayPosX(), t.getDisplayPosY(), 10, 10);
+        } 
     }
     
     public void debugDraw() {
@@ -330,6 +339,59 @@ public class MyPanel extends JPanel //implements KeyListener
             }
         } else {
             hitsS.clear();
+        }
+    }
+
+    public void drawEnemyTracker() {
+        boolean hasTracker = false;
+        for(ArmorModule am : MainProgram.player.getInventory().getArmorModules()) {
+            if(am instanceof EnemyTracker) {
+                hasTracker = true;
+                break;
+            }
+        }
+
+        if(hasTracker) {
+            graphic.setColor(Color.WHITE);
+            for(Zombie z : MainProgram.zombies) {
+
+
+                String sDirect;
+                double numer = MainProgram.player.getDisplayPosY() - z.getDisplayPosY();
+                double denum = MainProgram.player.getDisplayPosX() - z.getDisplayPosX();
+                double slope = numer / denum;
+                double y = slope * (0 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY();
+                slope = slope;
+                if(z.getPositionX() > MainProgram.player.getPositionX()) {
+                    sDirect = "right";
+                } else if(z.getPositionX() < MainProgram.player.getPositionX()) {
+                    sDirect = "left";
+                } else if(slope == Double.NEGATIVE_INFINITY) {
+                    sDirect = "up";
+                } else if(slope == Double.POSITIVE_INFINITY) {
+                    sDirect = "down";
+                }
+
+                if((z.getDisplayPosX() > 1920 || z.getDisplayPosX() < 0) || (z.getDisplayPosY() > 1080 || z.getDisplayPosY() < 0)) {
+                    if((z.getDisplayPosX() > 1920 || z.getDisplayPosX() < 0) && z.getDisplayPosY() > 0 && z.getDisplayPosY() < 1080) {
+                        if (z.getDisplayPosX() > 1920) {
+                            filledEllipse((1920) - 15, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 15, 30, 30);
+                            //line(0, (int)y, 1920, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()));
+                            //filledTriangle((1920) - 15, (int)(slope * (1920 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 15, );
+                        } else if(z.getDisplayPosX() < 0) {
+                            filledEllipse((0) - 15, (int)(slope * (0 - MainProgram.player.getDisplayPosX()) + MainProgram.player.getDisplayPosY()) - 15, 30, 30);
+                        }
+                    } else if((z.getDisplayPosY() > 1080 || z.getDisplayPosY() < 0) && z.getDisplayPosX() > 0 && z.getDisplayPosX() < 1920) {
+                        if(z.getDisplayPosY() > 1080) {
+                            filledEllipse((int)((1080 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 15, 1080,  30, 30);
+                        } else if(z.getDisplayPosY() < 0) {
+                            filledEllipse((int)((0 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 15, 0,  30, 30);
+                        }
+                    } else if(z.getDisplayPosX() < 0 && z.getDisplayPosY() < 0) {
+                        line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), z.getDisplayPosX(), z.getDisplayPosY());
+                    }
+                }
+            }
         }
     }
 

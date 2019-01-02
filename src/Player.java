@@ -9,7 +9,7 @@ public class Player extends Entity
     public Player()
     {
         super();
-        getInventory().setGunPrimary(new BasicSlingshot());
+        getInventory().setGunPrimary(new Sword());
         getInventory().setGunBody(new MagnetoRepulser());
         getInventory().setGunSecondary(new TripleSlingshot());
         getInventory().setArmorHead(new Hat());
@@ -23,6 +23,7 @@ public class Player extends Entity
         getInventory().addAM(new ManualArmorTurret());
         getInventory().addAM(new ManualArmorTurret());
         getInventory().addAM(new ManualArmorTurret());
+        getInventory().addAM(new EnemyTracker());
         getInventory().turrets.add(new Turret());
         calculateArmor();
         setDefaultHealth(500);
@@ -140,8 +141,8 @@ public class Player extends Entity
     
     public void placeTurret(double mX, double mY) {
         Turret turret = getInventory().turrets.get(0);
-        turret.setPositionX(mX + getChangeX());
-        turret.setPositionY(mY + getChangeY());
+        turret.setPositionX(mX - getChangeX());
+        turret.setPositionY(mY - getChangeY());
         turret.fixDisplayCoords();
         MainProgram.turrets.add(turret);
         getInventory().turrets.remove(0);

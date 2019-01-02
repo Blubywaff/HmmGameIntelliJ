@@ -110,6 +110,9 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
             if(keysDown.contains(new Integer(KeyEvent.VK_F))) {
                 MainProgram.player.fireATs();
             }
+            if(keysDown.contains(new Integer(KeyEvent.VK_P))) {
+                MainProgram.player.placeTurret(getMX(), getMY());
+            }
         }
         if(keysDown.contains(new Integer(KeyEvent.VK_ESCAPE)))
         {

@@ -43,13 +43,13 @@ public class MainProgram {
             zombieSpawner.setPositionY(Math.random()*1000);
             zombieSpawners.add(zombieSpawner);
         }
-        for(int i = 0; i < 25; i++) {
+        for(int i = 0; i < 50; i++) {
             Tree t = new Tree();
             t.setPositionX(Math.random()*2000);
             t.setPositionY(Math.random()*1000);
             trees.add(t);
         }
-        for(int i = 0; i < 25; i++) {
+        for(int i = 0; i < 50; i++) {
             Rock r = new Rock();
             r.setPositionX(Math.random()*2000);
             r.setPositionY(Math.random()*1000);

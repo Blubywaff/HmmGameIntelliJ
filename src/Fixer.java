@@ -21,6 +21,7 @@ public class Fixer
         fixEnvironmentDisplay();
         fixPlayerTakingDamage();
         fixRegen();
+        fixTurretDisplay();
         checkAMs();
         checkPD();
         MainProgram.myFrame.panelRefresh();
@@ -29,6 +30,12 @@ public class Fixer
     
     public static void fixRegen() {
         MainProgram.player.regen();
+    }
+    
+    public static void fixTurretDisplay() {
+        for(Turret t : MainProgram.turrets) {
+            t.fixDisplayCoords();
+        }
     }
 
     public static void checkAMs() {
