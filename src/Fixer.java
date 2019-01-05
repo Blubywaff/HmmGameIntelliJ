@@ -77,14 +77,25 @@ public class Fixer
         ArrayList<Zombie> zRemoves = new ArrayList<Zombie>();
         for(Zombie z : MainProgram.zombies) {
             z.checkDead();
-            if(MainProgram.tick >= z.getDeathTick() + 500 && z.isDead() && z.getDeathTick() != -1) {
+            if(MainProgram.tick >= z.getDeathTick() + 500/MainProgram.tickSpeed && z.isDead() && z.getDeathTick() != -1) {
                 zRemoves.add(z);
             }
         }
         for(Zombie z : zRemoves) {
             MainProgram.zombies.remove(z);
         }
-        
+
+        ArrayList<ZombieSpawner> zsRemoves = new ArrayList<ZombieSpawner>();
+        for(ZombieSpawner zs : MainProgram.zombieSpawners) {
+            zs.checkDead();
+            if(MainProgram.tick >= zs.getDeathTick() + 500/MainProgram.tickSpeed && zs.isDead() && zs.getDeathTick() != -1) {
+                zsRemoves.add(zs);
+            }
+        }
+        for(ZombieSpawner zs : zsRemoves) {
+            MainProgram.zombieSpawners.remove(zs);
+        }
+
         ArrayList<Tree> tRemoves = new ArrayList<Tree>();
         for(Tree t : MainProgram.trees) {
             t.checkDead();

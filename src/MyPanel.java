@@ -129,9 +129,11 @@ public class MyPanel extends JPanel //implements KeyListener
     
     public void drawTurrets() {
         graphic.setColor(Color.BLUE);
-        for(Turret t : MainProgram.turrets) {
-            filledRectangle(t.getDisplayPosX(), t.getDisplayPosY(), 10, 10);
-        } 
+        if(MainProgram.turrets.size() != 0) {
+            for (Turret t : MainProgram.turrets) {
+                filledRectangle(t.getDisplayPosX() - 5, t.getDisplayPosY() - 5, 10, 10);
+            }
+        }
     }
     
     public void debugDraw() {
@@ -139,7 +141,7 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLACK);
         makeText("" + MainProgram.tick, 1800, 980);
         makeText("" + MainProgram.zombies.size(), 1800, 1000);
-        makeText("" + MainProgram.player.getHealth(), 1800, 1020);
+        makeText("" + /*MainProgram.zombieSpawners.get(0).getHealth()*/ MainProgram.zombieSpawners.get(0).isDead(), 1800, 1020);
     }
     
     public void drawPD() {
@@ -278,42 +280,49 @@ public class MyPanel extends JPanel //implements KeyListener
     }
     public static void drawZombies()
     {
-        for(Zombie z : MainProgram.zombies) {
-            if(!z.isDead())
-            {
-                graphic.setColor(Color.WHITE);
-                filledEllipse(z.getDisplayX()-10, z.getDisplayY()-10, 20, 20);
-                graphic.setColor(Color.RED);
-                filledEllipse(z.getDisplayX()-9, z.getDisplayY()-9, 18, 18);
-            } else {
-                graphic.setColor(Color.RED);
-                filledEllipse(z.getDisplayX()-10, z.getDisplayY()-10, 20, 20);
+        if(MainProgram.zombies.size() != 0) {
+            for (Zombie z : MainProgram.zombies) {
+                if (!z.isDead()) {
+                    graphic.setColor(Color.WHITE);
+                    filledEllipse(z.getDisplayX() - 10, z.getDisplayY() - 10, 20, 20);
+                    graphic.setColor(Color.RED);
+                    filledEllipse(z.getDisplayX() - 9, z.getDisplayY() - 9, 18, 18);
+                } else {
+                    graphic.setColor(Color.RED);
+                    filledEllipse(z.getDisplayX() - 10, z.getDisplayY() - 10, 20, 20);
+                }
             }
         }
     }
     
     public void drawSpawners() {
-        for(ZombieSpawner zs : MainProgram.zombieSpawners) {
-            graphic.setColor(Color.BLACK);
-            filledEllipse(zs.getDisplayPosX() -10, zs.getDisplayPosY() -10, 20, 20);
+        if(MainProgram.zombieSpawners.size() != 0) {
+            for (ZombieSpawner zs : MainProgram.zombieSpawners) {
+                graphic.setColor(Color.BLACK);
+                filledEllipse(zs.getDisplayPosX() - 10, zs.getDisplayPosY() - 10, 20, 20);
+            }
         }
     }
     
     public void drawTrees() {
-        for(Tree t : MainProgram.trees) {
-            graphic.setColor(Color.BLACK);
-            filledEllipse(t.getDisplayPosX() -10, t.getDisplayPosY() -10, 20, 20);
-            graphic.setColor(Color.CYAN);
-            filledEllipse(t.getDisplayPosX() -9, t.getDisplayPosY() -9, 18, 18);
+        if(MainProgram.trees.size() != 0) {
+            for (Tree t : MainProgram.trees) {
+                graphic.setColor(Color.BLACK);
+                filledEllipse(t.getDisplayPosX() - 10, t.getDisplayPosY() - 10, 20, 20);
+                graphic.setColor(Color.CYAN);
+                filledEllipse(t.getDisplayPosX() - 9, t.getDisplayPosY() - 9, 18, 18);
+            }
         }
     }
     
     public void drawRocks() {
-        for(Rock r : MainProgram.rocks) {
-            graphic.setColor(Color.BLACK);
-            filledEllipse(r.getDisplayPosX() -10, r.getDisplayPosY() -10, 20, 20);
-            graphic.setColor(Color.GRAY);
-            filledEllipse(r.getDisplayPosX() -9, r.getDisplayPosY() -9, 18, 18);
+        if(MainProgram.rocks.size() != 0) {
+            for (Rock r : MainProgram.rocks) {
+                graphic.setColor(Color.BLACK);
+                filledEllipse(r.getDisplayPosX() - 10, r.getDisplayPosY() - 10, 20, 20);
+                graphic.setColor(Color.GRAY);
+                filledEllipse(r.getDisplayPosX() - 9, r.getDisplayPosY() - 9, 18, 18);
+            }
         }
     }
     

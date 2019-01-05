@@ -16,7 +16,7 @@ public class ZombieSpawner extends Spawner {
     
     @Override
     public void spawn() {
-        if(MainProgram.tick - tickSpawn >= speed / MainProgram.tickSpeed) {
+        if(!isDead() && MainProgram.tick - tickSpawn >= speed / MainProgram.tickSpeed) {
             Zombie zombie = doSpawn();
             MainProgram.zombies.add(zombie);
             tickSpawn = MainProgram.tick;
