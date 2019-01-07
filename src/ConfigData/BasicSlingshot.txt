@@ -2,3 +2,5 @@ defaultDamage - 50
 defaultRange - 100
 defaultFireRate - 5000
 defaultProjectileNum - 1
+displayName - Basic Slingshot
+description - Yeah... You're screwed.

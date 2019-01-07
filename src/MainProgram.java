@@ -17,6 +17,7 @@ public class MainProgram {
     public static final int tickSpeed = 20;
     public static  ArrayList<String> weaponsList = new ArrayList<>();
     public static ArrayList<String> rands = new ArrayList<>();
+    public static ArrayList<String> dRands = new ArrayList<>();
 
     public static void main(String[] args)
     {
@@ -65,7 +66,8 @@ public class MainProgram {
 
         weaponsList = FileManager.listWeapons();
         for(String s : weaponsList) {
-            rands.add(myFrame.p.genRand(s.length()));
+            rands.add(myFrame.p.genRand(FileManager.doByNameS(s, "displayName").length()));
+            dRands.add(myFrame.p.genRand(FileManager.doByNameS(s, "description").length()));
         }
 
     }

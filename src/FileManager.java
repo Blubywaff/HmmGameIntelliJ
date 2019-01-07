@@ -40,6 +40,26 @@ public class FileManager {
         }
     }
 
+    public static String doByNameS(String name, String info) {
+        String result = "";
+        switch (name) {
+            case "BasicSlingshot":
+                result = basicSlingshot1(info);
+                break;
+            case "AdvancedSlingshot":
+                result = advancedSlingshot1(info);
+                break;
+            case "DoubleSlingshot":
+                result = doubleSlingshot1(info);
+                break;
+            case "TripleSlingshot":
+                result = tripleSlingshot1(info);
+                break;
+        }
+        return result;
+    }
+
+
     public static double basicSlingshot(String info) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "BasicSlingshot.txt"));
@@ -58,6 +78,26 @@ public class FileManager {
         } catch(IOException e) {
             System.out.println("IOException was thrown!");
             return 0;
+        }
+    }
+    public static String basicSlingshot1(String info) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "BasicSlingshot.txt"));
+            String line = "";
+            String result = "";
+            while((line = reader.readLine()) != null) {
+                if(line.contains(info)) {
+                    result = line.substring(info.length()+2);
+                }
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return "";
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return "";
         }
     }
 
@@ -81,6 +121,26 @@ public class FileManager {
             return 0;
         }
     }
+    public static String advancedSlingshot1(String info) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "AdvancedSlingshot.txt"));
+            String line = "";
+            String result = "";
+            while((line = reader.readLine()) != null) {
+                if(line.contains(info)) {
+                    result = line.substring(info.length()+2);
+                }
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return "";
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return "";
+        }
+    }
 
     public static double doubleSlingshot(String info) {
         try {
@@ -102,6 +162,26 @@ public class FileManager {
             return 0;
         }
     }
+    public static String doubleSlingshot1(String info) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "DoubleSlingshot.txt"));
+            String line = "";
+            String result = "";
+            while((line = reader.readLine()) != null) {
+                if(line.contains(info)) {
+                    result = line.substring(info.length()+2);
+                }
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return "";
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return "";
+        }
+    }
 
     public static double tripleSlingshot(String info) {
         try {
@@ -121,6 +201,26 @@ public class FileManager {
         } catch(IOException e) {
             System.out.println("IOException was thrown!");
             return 0;
+        }
+    }
+    public static String tripleSlingshot1(String info) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "TripleSlingshot.txt"));
+            String line = "";
+            String result = "";
+            while((line = reader.readLine()) != null) {
+                if(line.contains(info)) {
+                    result = line.substring(info.length()+2);
+                }
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return "";
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return "";
         }
     }
 

@@ -423,11 +423,15 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLUE);
         filledRectangle(0, 0, 1920, 1080);
         graphic.setColor(Color.BLACK);
-        graphic.setFont(new Font("mainMenu1", 0, 50));
+        graphic.setFont(new Font("mainMenu1", 0, 100));
         if (FileManager.weaponIsDiscovered(MainProgram.weaponsList.get(page))){
-            makeText(MainProgram.weaponsList.get(page), 50, 50);
+            makeText(FileManager.doByNameS(MainProgram.weaponsList.get(page), "displayName"), 50, 100);
+            graphic.setFont(new Font("mainMenu1", 0, 30));
+            makeText(FileManager.doByNameS(MainProgram.weaponsList.get(page), "description"), 200, 900);
         } else {
-            makeText(MainProgram.rands.get(page), 50, 50);
+            makeText(MainProgram.rands.get(page), 50, 100);
+            graphic.setFont(new Font("mainMenu1", 0, 30));
+            makeText(MainProgram.dRands.get(page), 200, 900);
         }
 
         if(MainProgram.myFrame.getMY() >= 1050 || MainProgram.myFrame.getMY() <= 1000) {
@@ -447,6 +451,8 @@ public class MyPanel extends JPanel //implements KeyListener
         }
         rectangle(30, 1000, 50, 50);
         filledTriangle(30, 1025, 80, 1000, 80, 1050);
+        //graphic.setColor(Color.WHITE);
+        //filledRectangle(150, 150, 1620, 780);
 
     }
 
