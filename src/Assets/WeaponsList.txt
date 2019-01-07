@@ -1,0 +1,4 @@
+BasicSlingshot discovered
+AdvancedSlingshot undiscovered
+DoubleSlingshot undiscovered
+TripleSlingshot undiscovered

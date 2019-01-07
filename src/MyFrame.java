@@ -116,7 +116,7 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
         }
         if(keysDown.contains(new Integer(KeyEvent.VK_ESCAPE)))
         {
-            if(dMode == "singleplayer" || dMode == "settings" || dMode == "player dead") {
+            if(dMode == "singleplayer" || dMode == "settings" || dMode == "player dead" || dMode == "weapons" || dMode == "zombies") {
                 dMode = "main menu";
             } else if(dMode == "inventory") {
                 dMode = "singleplayer";
@@ -170,11 +170,16 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
         }
         if(dMode == "main menu") {
             if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON1)))  {
-                if(x > 100 && x < 500 && y > 100 && y < 250) {
+                if(x <= 100 || x >= 500) {
+                } else if(y > 100 && y < 250) {
                     dMode = "singleplayer";
                 }
-                if(x > 100 && x < 500 && y > 300 && y < 450) {
+                else if(y > 300 && y < 450) {
                     dMode = "settings";
+                } else if(y > 500 && y < 650) {
+                    dMode = "weapons";
+                } else if(y > 700 && y < 850) {
+                    dMode = "zombies";
                 }
             }
         } else if(dMode == "singleplayer") {
@@ -183,6 +188,21 @@ public class MyFrame extends JFrame implements KeyListener, MouseListener
             }
             if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON3)) /*isRightClick(mouseEvent)*/) {
                 MainProgram.player.use(3, getMX(), getMY());
+            }
+        } else if(dMode == "weapons") {
+            if(mouseKeysDown.contains(new Integer(MouseEvent.BUTTON1))) {
+                if(y >= 1050 && y <= 1000);
+                else if(MainProgram.myFrame.getMX() > 1840 && MainProgram.myFrame.getMX() < 1890) {
+                    MyPanel.page++;
+                    if (MyPanel.page == MainProgram.weaponsList.size()) {
+                        MyPanel.page = MainProgram.weaponsList.size() - 1;
+                    }
+                } else if(MainProgram.myFrame.getMX() > 30 && MainProgram.myFrame.getMX() < 80) {
+                    MyPanel.page--;
+                    if(MyPanel.page == -1) {
+                        MyPanel.page = 0;
+                    }
+                }
             }
         }
     }

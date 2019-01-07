@@ -1,52 +1,48 @@
 import java.io.*;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.regex.*;
 
 public class FileManager {
-    public static String configFileName = "ConfigData.txt";
-    public static String basePath = "ConfigData\\";
+    public static String configBasePath = "ConfigData\\";
+    public static String listBasePath = "Assets\\";
+
     public static void init() {
         try {
-            basePath = new File(".").getCanonicalPath();
-            boolean contains = basePath.contains("/");
-            boolean contains2 = basePath.contains("src");
+            configBasePath = new File(".").getCanonicalPath();
+            boolean contains = configBasePath.contains("/");
+            boolean contains2 = configBasePath.contains("src");
             if (contains && contains2) {
-                basePath += "/ConfigData/";
+                configBasePath += "/ConfigData/";
             } else if (contains) {
-                basePath += "/src/ConfigData/";
+                configBasePath += "/src/ConfigData/";
             } else if (contains2) {
-                basePath += "\\ConfigData\\";
+                configBasePath += "\\ConfigData\\";
             } else  {
-                basePath += "\\src\\ConfigData\\";
+                configBasePath += "\\src\\ConfigData\\";
             }
+
+            listBasePath = new File(".").getCanonicalPath();
+            contains = listBasePath.contains("/");
+            contains2 = listBasePath.contains("src");
+            if (contains && contains2) {
+                listBasePath += "/Assets/";
+            } else if (contains) {
+                listBasePath += "/src/Assets/";
+            } else if (contains2) {
+                listBasePath += "\\Assets\\";
+            } else  {
+                listBasePath += "\\src\\Assets\\";
+            }
+
             //System.out.println("SUCCESS");
         } catch(IOException e) {
             System.out.println("FAILED");
         }
     }
-    public static String readConfig() {
-        try {
-            FileReader reader = new FileReader(configFileName);
-            BufferedReader bReader = new BufferedReader(reader);
-            String fullFile = "";
-            String line = "";
-            while((line = bReader.readLine()) != null) {
-                fullFile += "line" + "\n";
-            }
-            bReader.close();
-            return fullFile;
-        } catch(FileNotFoundException e) {
-            return("Missing config file!");
-        } catch(IOException e) {
-            return("IOException was thrown!");
-        }
-    }
-    
-    public static void setAll() {
-    }
 
     public static double basicSlingshot(String info) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(basePath + "BasicSlingshot.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "BasicSlingshot.txt"));
             String line = "";
             double result = 0;
             while((line = reader.readLine()) != null) {
@@ -67,7 +63,7 @@ public class FileManager {
 
     public static double advancedSlingshot(String info) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(basePath + "AdvancedSlingshot.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "AdvancedSlingshot.txt"));
             String line = "";
             double result = 0;
             while((line = reader.readLine()) != null) {
@@ -88,7 +84,7 @@ public class FileManager {
 
     public static double doubleSlingshot(String info) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(basePath + "DoubleSlingshot.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "DoubleSlingshot.txt"));
             String line = "";
             double result = 0;
             while((line = reader.readLine()) != null) {
@@ -109,7 +105,7 @@ public class FileManager {
 
     public static double tripleSlingshot(String info) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(basePath + "TripleSlingshot.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(configBasePath + "TripleSlingshot.txt"));
             String line = "";
             double result = 0;
             while((line = reader.readLine()) != null) {
@@ -125,6 +121,47 @@ public class FileManager {
         } catch(IOException e) {
             System.out.println("IOException was thrown!");
             return 0;
+        }
+    }
+
+    public static ArrayList<String> listWeapons() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(listBasePath + "WeaponsList.txt"));
+            String line = "";
+            ArrayList<String> result = new ArrayList<>();
+            while((line = reader.readLine()) != null) {
+                result.add(line.substring(0, line.indexOf(' ')));
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return null;
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return null;
+        }
+    }
+
+    public static boolean weaponIsDiscovered(String name) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(listBasePath + "WeaponsList.txt"));
+            String line = "";
+            boolean result = false;
+            while((line = reader.readLine()) != null) {
+                if(line.contains(name)) {
+                    result = (line.substring(name.length()+1)).equals("discovered");
+                    //System.out.println(line.substring(name.length()+1));
+                }
+            }
+            reader.close();
+            return result;
+        } catch(FileNotFoundException e) {
+            System.out.println("Missing config file!");
+            return false;
+        } catch(IOException e) {
+            System.out.println("IOException was thrown!");
+            return false;
         }
     }
 }

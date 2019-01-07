@@ -15,6 +15,9 @@ public class MainProgram {
     public static Player player;
     public static int tick = 0;
     public static final int tickSpeed = 20;
+    public static  ArrayList<String> weaponsList = new ArrayList<>();
+    public static ArrayList<String> rands = new ArrayList<>();
+
     public static void main(String[] args)
     {
         init();
@@ -56,5 +59,14 @@ public class MainProgram {
             rocks.add(r);
         }
         myFrame = new MyFrame("HMMMMMMMMMM");
+        System.out.println(FileManager.listWeapons());
+        System.out.println(FileManager.weaponIsDiscovered(FileManager.listWeapons().get(0)));
+        System.out.println(FileManager.weaponIsDiscovered(FileManager.listWeapons().get(1)));
+
+        weaponsList = FileManager.listWeapons();
+        for(String s : weaponsList) {
+            rands.add(myFrame.p.genRand(s.length()));
+        }
+
     }
 }
