@@ -425,9 +425,9 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLACK);
         graphic.setFont(new Font("mainMenu1", 0, 100));
         if (FileManager.weaponIsDiscovered(MainProgram.weaponsList.get(page))){
-            makeText(FileManager.doByNameS(MainProgram.weaponsList.get(page), "displayName"), 50, 100);
+            makeText(FileManager.sDo(MainProgram.weaponsList.get(page), "displayName"), 50, 100);
             graphic.setFont(new Font("mainMenu1", 0, 30));
-            makeText(FileManager.doByNameS(MainProgram.weaponsList.get(page), "description"), 200, 900);
+            makeText(FileManager.sDo(MainProgram.weaponsList.get(page), "description"), 200, 900);
         } else {
             makeText(MainProgram.rands.get(page), 50, 100);
             graphic.setFont(new Font("mainMenu1", 0, 30));

@@ -1,19 +1,19 @@
 public class BasicSlingshot extends Slingshots {
     public BasicSlingshot() {
         super();
-        setDefaultDamage(FileManager.basicSlingshot("defaultDamage"));
-        setDamage(getDefaultDamage());
-        setDefaultRange(FileManager.basicSlingshot("defaultRange"));
-        setRange(getDefaultRange());
-        setDefaultFireRate(FileManager.basicSlingshot("defaultFireRate"));//miliseconds delay
-        setFireRate(getDefaultFireRate());
-        setDefaultProjectileNum((int)FileManager.basicSlingshot("defaultProjectileNum"));
-        setProjectileNum(getDefaultProjectileNum());
         endInit();
         basicSlingshotInit();
     }
     
     public void basicSlingshotInit() {
-        setName("Basic Slingshot");
+        setName("BasicSlingshot");
+        setDefaultDamage(FileManager.dDo(getName(), "defaultDamage"));
+        setDamage(getDefaultDamage());
+        setDefaultRange(FileManager.dDo(getName(), "defaultRange"));
+        setRange(getDefaultRange());
+        setDefaultFireRate(FileManager.dDo(getName(), "defaultFireRate"));//miliseconds delay
+        setFireRate(getDefaultFireRate());
+        setDefaultProjectileNum((int)FileManager.dDo(getName(), "defaultProjectileNum"));
+        setProjectileNum(getDefaultProjectileNum());
     }
 }

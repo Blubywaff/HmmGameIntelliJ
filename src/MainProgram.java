@@ -66,8 +66,8 @@ public class MainProgram {
 
         weaponsList = FileManager.listWeapons();
         for(String s : weaponsList) {
-            rands.add(myFrame.p.genRand(FileManager.doByNameS(s, "displayName").length()));
-            dRands.add(myFrame.p.genRand(FileManager.doByNameS(s, "description").length()));
+            rands.add(myFrame.p.genRand(FileManager.sDo(s, "displayName").length()));
+            dRands.add(myFrame.p.genRand(FileManager.sDo(s, "description").length()));
         }
 
     }
