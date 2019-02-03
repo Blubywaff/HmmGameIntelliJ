@@ -1,5 +1,3 @@
-import com.sun.tools.javac.Main;
-
 import java.awt.*;
 import javax.swing.*;
 //import java.awt.event.*; //not used
@@ -142,7 +140,7 @@ public class MyPanel extends JPanel //implements KeyListener
         graphic.setColor(Color.BLACK);
         makeText("" + MainProgram.tick, 1800, 980);
         makeText("" + MainProgram.zombies.size(), 1800, 1000);
-        makeText("" + /*MainProgram.zombieSpawners.get(0).getHealth()*/ MainProgram.zombieSpawners.get(0).isDead(), 1800, 1020);
+        makeText("" + MainProgram.player.getHealth(), 1800, 1020);
     }
 
     public void drawPD() {
@@ -411,9 +409,9 @@ public class MyPanel extends JPanel //implements KeyListener
                         } else if (z.getDisplayPosY() < 0) {
                             filledEllipse((int) ((0 - MainProgram.player.getDisplayPosY()) / slope + MainProgram.player.getDisplayPosX()) - 5, (0) - 5, 10, 10);
                         }
-                    } else if (z.getDisplayPosX() < 0 && z.getDisplayPosY() < 0) {
+                    } /*else if (z.getDisplayPosX() < 0 && z.getDisplayPosY() < 0) {
                         line(MainProgram.player.getDisplayPosX(), MainProgram.player.getDisplayPosY(), z.getDisplayPosX(), z.getDisplayPosY());
-                    }
+                    }*/
                 }
             }
         }
@@ -467,5 +465,4 @@ public class MyPanel extends JPanel //implements KeyListener
         }
         return result;
     }
-
 }

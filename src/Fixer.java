@@ -26,6 +26,7 @@ public class Fixer
         checkPD();
         MainProgram.myFrame.panelRefresh();
         MainProgram.myFrame.fixPlayerDirection();
+        MainProgram.player.checkBuffs();
     }
     
     public static void fixRegen() {
@@ -74,7 +75,7 @@ public class Fixer
         }
     }
     public static void removeDeads() {
-        ArrayList<Zombie> zRemoves = new ArrayList<Zombie>();
+        ArrayList<Zombie> zRemoves = new ArrayList<>();
         for(Zombie z : MainProgram.zombies) {
             z.checkDead();
             if(MainProgram.tick >= z.getDeathTick() + 500/MainProgram.tickSpeed && z.isDead() && z.getDeathTick() != -1) {
@@ -85,7 +86,7 @@ public class Fixer
             MainProgram.zombies.remove(z);
         }
 
-        ArrayList<ZombieSpawner> zsRemoves = new ArrayList<ZombieSpawner>();
+        ArrayList<ZombieSpawner> zsRemoves = new ArrayList<>();
         for(ZombieSpawner zs : MainProgram.zombieSpawners) {
             zs.checkDead();
             if(MainProgram.tick >= zs.getDeathTick() + 500/MainProgram.tickSpeed && zs.isDead() && zs.getDeathTick() != -1) {
@@ -96,7 +97,7 @@ public class Fixer
             MainProgram.zombieSpawners.remove(zs);
         }
 
-        ArrayList<Tree> tRemoves = new ArrayList<Tree>();
+        ArrayList<Tree> tRemoves = new ArrayList<>();
         for(Tree t : MainProgram.trees) {
             t.checkDead();
             if(t.isDead()) {
@@ -107,7 +108,7 @@ public class Fixer
             MainProgram.trees.remove(t);
         }
         
-        ArrayList<Rock> rRemoves = new ArrayList<Rock>();
+        ArrayList<Rock> rRemoves = new ArrayList<>();
         for(Rock r : MainProgram.rocks) {
             r.checkDead();
             if(r.isDead()) {
@@ -136,7 +137,7 @@ public class Fixer
         }
     }
     public static void entityCap() {
-        ArrayList<Zombie> olds = new ArrayList<Zombie>();
+        ArrayList<Zombie> olds = new ArrayList<>();
         int numRemoved = 0;
         if(MainProgram.zombies.size() > 100) {
             for(Zombie z : MainProgram.zombies) {

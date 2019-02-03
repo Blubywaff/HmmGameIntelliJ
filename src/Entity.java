@@ -1,14 +1,13 @@
 import java.util.*;
-public class Entity
-{
+public class Entity  {
     private double health;
     private double shield;
     private double armor;
     private double damage = 10;
-    private double positionX;
-    private double positionY;
-    private int displayPosX;
-    private int displayPosY;
+    private double positionX = 960;
+    private double positionY = 540;
+    private int displayPosX = 960;
+    private int displayPosY = 540;
     private double direction = 0;
     private String sDirect = "right";
     private static final double DIAGMOVE = 0.7071068;
@@ -20,7 +19,9 @@ public class Entity
     private Inventory inventory = new Inventory();
     private Resource drops = new ZombieParts((int)(Math.random()*5+3))/*NullResource()*/;
     public double regenFactor = 0;
+    public double defaultRegenFactor = 0;
     public int regenSpeed = 0;
+    public double defaultRegenSpeed = 0;
     public int regenTick = -10000;
     
     public Entity()
@@ -47,8 +48,10 @@ public class Entity
     public void regen() {
         if(getHealth() + regenFactor <= getDefaultHealth() && !isDead() && MainProgram.tick >= regenTick + regenSpeed/MainProgram.tickSpeed) {
             setHealth(getHealth() + regenFactor);
+            regenTick = MainProgram.tick;
         } else if(!isDead() && MainProgram.tick >= regenTick + regenSpeed/MainProgram.tickSpeed) {
             setHealth(getDefaultHealth());
+            regenTick = MainProgram.tick;
         }
     }
 
@@ -58,6 +61,7 @@ public class Entity
         setHealth(100);
         setDead(false);
         setSpawnTick(MainProgram.tick);
+        fixDisplayCoords();
     }
     
     public void damage(double d) {
@@ -84,10 +88,13 @@ public class Entity
         }
     }
     
-    public void fixDisplayCoords()
-    {
-        setDisplayPosX((int) (getPositionX() - (MainProgram.player.getPositionX() - MainProgram.player.getDisplayPosX())));
-        setDisplayPosY((int) (getPositionY() - (MainProgram.player.getPositionY() - MainProgram.player.getDisplayPosY())));
+    public void fixDisplayCoords() {
+        try {
+            setDisplayPosX((int) (getPositionX() - (MainProgram.player.getPositionX() - MainProgram.player.getDisplayPosX())));
+            setDisplayPosY((int) (getPositionY() - (MainProgram.player.getPositionY() - MainProgram.player.getDisplayPosY())));
+        } catch(NullPointerException n) {
+
+        }
     }
 
     public double getPosX()
@@ -168,6 +175,21 @@ public class Entity
         } else if(direction == "left") {
             setPositionY(getPositionY() + vector * getMoveScale());
             setPositionX(getPositionX() - 1 * getMoveScale());
+        }
+    }
+
+    public void addBuff(Buff b) {
+        getInventory().buffs.add(b);
+        b.apply(this);
+    }
+    public void removeBuff(Buff b) {
+        getInventory().buffs.remove(b);
+        b.unapply(this);
+    }
+    public void checkBuffs() {
+        for(Buff b : getInventory().buffs) {
+            if(MainProgram.tick > b.applyTick + b.time)
+                removeBuff(b);
         }
     }
 

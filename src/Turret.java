@@ -1,7 +1,13 @@
 public class Turret extends Building {
     public Gun gun;
     public Turret() {
+        super();
         gun = new TripleSlingshot();
+    }
+    public Turret(double posX, double posY) {
+        super(posX, posY);
+        gun = new TripleSlingshot();
+
     }
     
     public void fire() {

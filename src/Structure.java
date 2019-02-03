@@ -2,6 +2,9 @@ public class Structure extends Entity {
     public Structure() {
         super();
     }
+    public Structure(double posX, double posY) {
+        super(posX, posY);
+    }
     
     public void mine() {
     }

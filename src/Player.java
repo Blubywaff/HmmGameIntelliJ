@@ -33,7 +33,9 @@ public class Player extends Entity
         setPositionY(540);
         setDisplayPosY(540);
         regenFactor = 1;
+        defaultRegenFactor = 1;
         regenSpeed = 1000;
+        defaultRegenSpeed = 1000;
     }
     
     public int getChangeX()

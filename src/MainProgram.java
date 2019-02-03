@@ -1,16 +1,17 @@
 import javax.swing.*;
 //import java.awt.*; //not used
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainProgram {
-    public static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-    public static ArrayList<ZombieSpawner> zombieSpawners = new ArrayList<ZombieSpawner>();
-    public static ArrayList<Tree> trees = new ArrayList<Tree>();
-    public static ArrayList<Rock> rocks = new ArrayList<Rock>();
-    public static ArrayList<Turret> turrets = new ArrayList<Turret>();
+    public static ArrayList<Zombie> zombies = new ArrayList<>();
+    public static ArrayList<ZombieSpawner> zombieSpawners = new ArrayList<>();
+    public static ArrayList<Tree> trees = new ArrayList<>();
+    public static ArrayList<Rock> rocks = new ArrayList<>();
+    public static ArrayList<Turret> turrets = new ArrayList<>();
+    public static ArrayList<Building> buildings = new ArrayList<>();
     public static MyFrame myFrame;
     public static Player player;
     public static int tick = 0;
@@ -60,9 +61,6 @@ public class MainProgram {
             rocks.add(r);
         }
         myFrame = new MyFrame("HMMMMMMMMMM");
-        System.out.println(FileManager.listWeapons());
-        System.out.println(FileManager.weaponIsDiscovered(FileManager.listWeapons().get(0)));
-        System.out.println(FileManager.weaponIsDiscovered(FileManager.listWeapons().get(1)));
 
         weaponsList = FileManager.listWeapons();
         for(String s : weaponsList) {

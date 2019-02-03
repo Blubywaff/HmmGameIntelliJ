@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Inventory
 {
-    private ArrayList<Object> items =  new ArrayList<Object>();
+    private ArrayList<Object> items =  new ArrayList<>();
     private ZombieParts zParts = new ZombieParts(0);
     private Wood wood = new Wood(0);
     private Stone stone = new Stone(0);
@@ -18,7 +18,8 @@ public class Inventory
     private Tool toolSecondary = new NullTool();
     private int numAM = 0;
     private ArmorModule[] armorModules = new ArmorModule[getNumAM()];
-    public ArrayList<Turret> turrets = new ArrayList<Turret>();
+    public ArrayList<Turret> turrets = new ArrayList<>();
+    public ArrayList<Buff> buffs = new ArrayList<>();
 
     public Inventory() {
         init();
