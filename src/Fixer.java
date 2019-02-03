@@ -26,7 +26,6 @@ public class Fixer
         checkPD();
         MainProgram.myFrame.panelRefresh();
         MainProgram.myFrame.fixPlayerDirection();
-        MainProgram.player.checkBuffs();
     }
     
     public static void fixRegen() {

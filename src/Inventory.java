@@ -19,7 +19,6 @@ public class Inventory
     private int numAM = 0;
     private ArmorModule[] armorModules = new ArmorModule[getNumAM()];
     public ArrayList<Turret> turrets = new ArrayList<>();
-    public ArrayList<Buff> buffs = new ArrayList<>();
 
     public Inventory() {
         init();

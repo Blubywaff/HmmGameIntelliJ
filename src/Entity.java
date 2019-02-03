@@ -178,21 +178,6 @@ public class Entity  {
         }
     }
 
-    public void addBuff(Buff b) {
-        getInventory().buffs.add(b);
-        b.apply(this);
-    }
-    public void removeBuff(Buff b) {
-        getInventory().buffs.remove(b);
-        b.unapply(this);
-    }
-    public void checkBuffs() {
-        for(Buff b : getInventory().buffs) {
-            if(MainProgram.tick > b.applyTick + b.time)
-                removeBuff(b);
-        }
-    }
-
     public double getHealth() {
         return health;
     }
